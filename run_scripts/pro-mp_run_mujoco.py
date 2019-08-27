@@ -1,3 +1,6 @@
+import os
+from sys import platform
+
 # escaping check_mujoco_version() in config.py (mjpro have to == mjpro131)
 if platform == 'linux':
     os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mjpro131"
@@ -34,7 +37,6 @@ from meta_policy_search.utils.utils import set_seed, ClassEncoder
 
 import numpy as np
 import tensorflow as tf
-import os
 import json
 import argparse
 import time
@@ -109,7 +111,6 @@ if __name__=="__main__":
 
     args = parser.parse_args()
 
-    from sys import platform
     if args.config_file: # load configuration from json file
         with open(args.config_file, 'r') as f:
             config = json.load(f)
