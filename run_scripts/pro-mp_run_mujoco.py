@@ -7,7 +7,11 @@ if platform == 'linux':
     if MJ == 200:
         os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mjpro131', 'mujoco200')
         print("--------------Switched to mujoco200---------------")
+        from meta_policy_search.envs.mujoco_envs.ant_rand_goal import AntRandGoalEnv
+        from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_vel import HalfCheetahRandVelEnv
+        from meta_policy_search.envs.mujoco_envs.humanoid_rand_direc_2d import HumanoidRandDirec2DEnv
     else:
+        from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandParamsWrappedEnv
         os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mujoco200', 'mjpro131')
         print("--------------Switched to mjpro131---------------")
 
@@ -15,11 +19,6 @@ if platform == 'linux':
 
 from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
 # from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_direc import HalfCheetahRandDirecEnv
-
-from meta_policy_search.envs.mujoco_envs.ant_rand_goal import AntRandGoalEnv
-from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_vel import HalfCheetahRandVelEnv
-from meta_policy_search.envs.mujoco_envs.humanoid_rand_direc_2d import HumanoidRandDirec2DEnv
-from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandParamsWrappedEnv
 
 
 
