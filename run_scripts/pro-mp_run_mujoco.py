@@ -10,10 +10,10 @@ from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandP
 Usage:
 python run_scripts/pro-mp_run_mujoco.py exp xxx
 
-AntRandGoalEnv
-HalfCheetahRandVelEnv
-HumanoidRandDirec2DEnv
-WalkerRandParamsWrappedEnv
+AntRandGoal
+HalfCheetahRandVel
+HumanoidRandDirec2D
+WalkerRandParamsWrapped
 
 '''
 
@@ -103,19 +103,32 @@ if __name__=="__main__":
 
     args = parser.parse_args()
 
-
+    from sys import platform
     if args.config_file: # load configuration from json file
         with open(args.config_file, 'r') as f:
             config = json.load(f)
 
     else: # use default config
 
+        if args.exp.startswith("W"):
+            if platform == 'linux':
+                os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mjpro131"
+            if platform == 'darwin':
+                os.environ['MUJOCO_PY_MJPRO_PATH'] = "~/.mujoco/mjpro131"
+            env_name = args.exp + "WrappedEnv"
+        else:
+            if platform == 'linux':
+                os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mujoco200"
+            if platform == 'darwin':
+                os.environ['MUJOCO_PY_MJPRO_PATH'] = "~/.mujoco/mujoco200"
+            env_name = args.exp + "Env"
+
         config = {
             'seed': 1,
 
             'baseline': 'LinearFeatureBaseline',
 
-            'env': args.exp, #'AntRandGoalEnv',
+            'env': env_name, #'AntRandGoalEnv',
 
             # sampler config
             'rollouts_per_meta_task': 1,
@@ -145,12 +158,15 @@ if __name__=="__main__":
 
         }
 
+    #####
+    dump_path = meta_policy_search_path + "/data/pro-mp/" + args.exp + "/run_%d" % idx
+
     # configure logger
-    logger.configure(dir=args.dump_path, format_strs=['stdout', 'log', 'csv'],
-                     snapshot_mode='last_gap')
+    logger.configure(dir=dump_path, format_strs=['stdout', 'log', 'csv'],
+                     snapshot_mode='last_gap')  # args.dump_path
 
     # dump run configuration before starting training
-    json.dump(config, open(args.dump_path + '/params.json', 'w'), cls=ClassEncoder)
+    json.dump(config, open(dump_path + '/params.json', 'w'), cls=ClassEncoder) # args.dump_path
 
     # start the actual algorithm
     main(config)
