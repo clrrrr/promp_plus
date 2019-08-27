@@ -3,7 +3,10 @@
   <component name="ChangeListManager">
     <list default="true" id="491bf9c1-9b49-4249-ac4a-d2f57b23997b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/ant_rand_goal.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/ant_rand_goal.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/half_cheetah_rand_vel.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/half_cheetah_rand_vel.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/humanoid_rand_direc_2d.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/humanoid_rand_direc_2d.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -14,44 +17,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf>
-      <file leaf-file-name="pro-mp_run_mujoco.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pro-mp_run_mujoco.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="30">
-              <caret line="4" column="83" selection-start-line="4" selection-start-column="83" selection-end-line="4" selection-end-column="83" />
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="half_cheetah_rand_vel.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/half_cheetah_rand_vel.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="102">
-              <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="ant_rand_goal.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/ant_rand_goal.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state>
-              <caret selection-end-line="6" selection-end-column="77" />
-              <folding>
-                <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="walker2d_rand_params.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="3" selection-start-line="3" selection-end-line="9" selection-end-column="77" />
+            <state relative-caret-position="204">
+              <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -67,8 +37,11 @@
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
       <list>
-        <option value="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py" />
+        <option value="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/humanoid_rand_direc_2d.py" />
+        <option value="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/half_cheetah_rand_vel.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/ant_rand_goal.py" />
+        <option value="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py" />
+        <option value="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" />
       </list>
     </option>
   </component>
@@ -177,12 +150,20 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py">
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/humanoid_rand_direc_2d.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="3" selection-start-line="3" selection-end-line="9" selection-end-column="77" />
+        <state>
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#2#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/half_cheetah_rand_vel.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#2#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -190,26 +171,27 @@
     <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/ant_rand_goal.py">
       <provider selected="true" editor-type-id="text-editor">
         <state>
-          <caret selection-end-line="6" selection-end-column="77" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#2#20#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state>
+          <folding>
+            <element signature="e#2#20#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="30">
-          <caret line="4" column="83" selection-start-line="4" selection-start-column="83" selection-end-line="4" selection-end-column="83" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/half_cheetah_rand_vel.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="102">
-          <caret line="6" column="6" selection-start-line="6" selection-start-column="6" selection-end-line="6" selection-end-column="6" />
+        <state relative-caret-position="204">
+          <caret line="12" lean-forward="true" selection-start-line="12" selection-end-line="12" />
           <folding>
-            <element signature="e#0#18#0" expanded="true" />
+            <element signature="e#0#9#0" expanded="true" />
           </folding>
         </state>
       </provider>
