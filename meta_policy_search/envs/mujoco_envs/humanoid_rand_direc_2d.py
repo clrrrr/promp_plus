@@ -1,3 +1,14 @@
+import os
+from sys import platform
+
+if platform == 'linux':
+    line = os.environ['MUJOCO_PY_MJPRO_PATH']
+    os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mjpro131', 'mujoco200')
+    print("--------------Switched to mujoco200---------------")
+else:  # win32 can only use up to 150
+    line = os.environ['MUJOCO_PY_MJPRO_PATH']
+    os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mjpro150', 'mjpro131')
+
 import numpy as np
 from meta_policy_search.envs.base import MetaEnv
 import gym

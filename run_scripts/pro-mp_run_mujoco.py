@@ -105,7 +105,7 @@ if __name__=="__main__":
 
             'baseline': 'LinearFeatureBaseline',
 
-            'env': 'WalkerRandParamsWrappedEnv',
+            'env': 'AntRandGoalEnv',
 
             # sampler config
             'rollouts_per_meta_task': 20,
