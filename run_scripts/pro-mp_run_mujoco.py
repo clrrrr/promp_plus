@@ -1,4 +1,4 @@
-MJ = 200
+MJ = 131
 import os
 from sys import platform
 
