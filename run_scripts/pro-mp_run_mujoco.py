@@ -16,7 +16,7 @@ if platform == 'linux':
         print("--------------Switched to mjpro131---------------")
         from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandParamsWrappedEnv
     line = os.environ['MUJOCO_PY_MJPRO_PATH']
-    print("--------------Current: ",line,---------------")
+    print("--------------Current: ",line,"---------------")
 
 from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
 # from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_direc import HalfCheetahRandDirecEnv
