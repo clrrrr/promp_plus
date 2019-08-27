@@ -5,7 +5,7 @@ from sys import platform
 if platform == 'linux':
     os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mjpro131"
 if platform == 'darwin':
-    os.environ['MUJOCO_PY_MJPRO_PATH'] = "~/.mujoco/mjpro131"
+    os.environ['MUJOCO_PY_MJPRO_PATH'] = "/Users/clrrrr/.mujoco/mjpro131"
 
 from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
 # from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_direc import HalfCheetahRandDirecEnv
@@ -121,13 +121,13 @@ if __name__=="__main__":
             if platform == 'linux':
                 os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mjpro131"
             if platform == 'darwin':
-                os.environ['MUJOCO_PY_MJPRO_PATH'] = "~/.mujoco/mjpro131"
+                os.environ['MUJOCO_PY_MJPRO_PATH'] = "/Users/clrrrr/.mujoco/mjpro131"
             env_name = args.exp + "WrappedEnv"
         else:
             if platform == 'linux':
                 os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mujoco200"
             if platform == 'darwin':
-                os.environ['MUJOCO_PY_MJPRO_PATH'] = "~/.mujoco/mujoco200"
+                os.environ['MUJOCO_PY_MJPRO_PATH'] = "/Users/clrrrr/.mujoco/mujoco200"
             env_name = args.exp + "Env"
 
         config = {
