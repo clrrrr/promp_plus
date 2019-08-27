@@ -5,8 +5,22 @@ import gym
 from gym.envs.mujoco.mujoco_env import MujocoEnv
 
 
-class WalkerRandParamsWrappedEnv(Walker2DRandParamsEnv, gym.utils.EzPickle): ##### MetaEnv, gym.utils.EzPickle, MujocoEnv, 去掉试试
-    def __init__(self, n_tasks=2, randomize_tasks=True):
+class WalkerRandParamsWrappedEnv(Walker2DRandParamsEnv): ##### MetaEnv, gym.utils.EzPickle, MujocoEnv, 去掉试试
+    def __init__(self, randomize_tasks=True):
+
+        '''
+        import os
+        from sys import platform
+
+        if platform == 'linux':
+            line = os.environ['MUJOCO_PY_MJPRO_PATH']
+            os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mujoco200', 'mjpro131')
+        elif platform == 'darwin':
+            os.environ['MUJOCO_PY_MJPRO_PATH'] = '~/.mujoco/mjpro131'
+        else: # win32 can only use up to 150
+            line = os.environ['MUJOCO_PY_MJPRO_PATH']
+            os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mjpro150', 'mjpro131')
+        '''
 
         super(WalkerRandParamsWrappedEnv, self).__init__()
         np.random.seed(1337)
@@ -17,9 +31,6 @@ class WalkerRandParamsWrappedEnv(Walker2DRandParamsEnv, gym.utils.EzPickle): ###
 
         self._tasks = super(WalkerRandParamsWrappedEnv, self).sample_tasks(self.NUM_TASKS) # self.sample_tasks(self.NUM_TASKS)
         self.set_task(self._tasks[0])
-
-        MujocoEnv.__init__(self, 'walker2d.xml', 8)
-        gym.utils.EzPickle.__init__(self)
 
 
 

@@ -1,25 +1,10 @@
-MJ = 131
-import os
-from sys import platform
-
-if platform == 'linux':
-    line = os.environ['MUJOCO_PY_MJPRO_PATH']
-    print("--------------Current: ",line,"---------------")
-    if MJ == 200:
-        os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mjpro131', 'mujoco200')
-        print("--------------Switched to mujoco200---------------")
-        from meta_policy_search.envs.mujoco_envs.ant_rand_goal import AntRandGoalEnv
-        from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_vel import HalfCheetahRandVelEnv
-        from meta_policy_search.envs.mujoco_envs.humanoid_rand_direc_2d import HumanoidRandDirec2DEnv
-    else:
-        os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mujoco200', 'mjpro131')
-        print("--------------Switched to mjpro131---------------")
-        from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandParamsWrappedEnv
-    line = os.environ['MUJOCO_PY_MJPRO_PATH']
-    print("--------------Current: ",line,"---------------")
-
 from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
 # from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_direc import HalfCheetahRandDirecEnv
+
+from meta_policy_search.envs.mujoco_envs.ant_rand_goal import AntRandGoalEnv
+from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_vel import HalfCheetahRandVelEnv
+from meta_policy_search.envs.mujoco_envs.humanoid_rand_direc_2d import HumanoidRandDirec2DEnv
+from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandParamsWrappedEnv
 
 
 
@@ -120,12 +105,12 @@ if __name__=="__main__":
 
             'baseline': 'LinearFeatureBaseline',
 
-            'env': 'WalkerRandParamsWrappedEnv',
+            'env': 'AntRandGoalEnv',
 
             # sampler config
-            'rollouts_per_meta_task': 20,
+            'rollouts_per_meta_task': 1,
             'max_path_length': 200,
-            'parallel': False,
+            'parallel': True,
 
             # sample processor config
             'discount': 0.99,
@@ -145,7 +130,7 @@ if __name__=="__main__":
             'init_inner_kl_penalty': 5e-4,
             'adaptive_inner_kl_penalty': False, # whether to use an adaptive or fixed KL-penalty coefficient
             'n_itr': 1001, # number of overall training iterations
-            'meta_batch_size': 40, # number of sampled meta-tasks per iterations
+            'meta_batch_size': 5, # number of sampled meta-tasks per iterations
             'num_inner_grad_steps': 1, # number of inner / adaptation gradient steps
 
         }

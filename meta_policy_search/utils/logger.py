@@ -344,10 +344,7 @@ class Logger(object):
     def dumpkvs(self):
 
         if self.level == DISABLED:
-            print("self.level == DISABLED, return")
             return
-        else:
-            print("self.level != DISABLED, not return")
 
         for fmt in self.output_formats:
             if isinstance(fmt, KVWriter):
@@ -428,14 +425,6 @@ def configure(dir=None, format_strs=None, snapshot_mode='last', snapshot_gap=1):
             format_strs = LOG_OUTPUT_FORMATS_MPI if rank>0 else LOG_OUTPUT_FORMATS
 
     output_formats = [make_output_format(f, dir, log_suffix) for f in format_strs]
-
-
-    print("=============== in configure() ================")
-
-    print("================================format strs: ", format_strs, "================================")
-
-    print("================================output formats: ", output_formats, "================================")
-
 
     Logger.CURRENT = Logger(dir=dir, output_formats=output_formats, snapshot_mode=snapshot_mode, snapshot_gap=snapshot_gap)
     log('Logging to %s'%dir)

@@ -57,6 +57,9 @@ class MetaSampler(Sampler):
         self.vec_env.set_tasks(tasks)
 
     def obtain_samples(self, log=False, log_prefix=''):
+
+        print("--------------obtaining samples--------------")
+
         """
         Collect batch_size trajectories from each task
 
@@ -130,6 +133,11 @@ class MetaSampler(Sampler):
         pbar.stop()
 
         self.total_timesteps_sampled += self.total_samples
+
+
+        print("------------self.total_timesteps_sampled:", self.total_timesteps_sampled, "-----------------")
+
+
         if log:
             logger.logkv(log_prefix + "PolicyExecTime", policy_time)
             logger.logkv(log_prefix + "EnvExecTime", env_time)
