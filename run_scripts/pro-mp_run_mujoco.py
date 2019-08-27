@@ -6,7 +6,16 @@ from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_vel import HalfCheeta
 from meta_policy_search.envs.mujoco_envs.humanoid_rand_direc_2d import HumanoidRandDirec2DEnv
 from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandParamsWrappedEnv
 
+'''
+Usage:
+python run_scripts/pro-mp_run_mujoco.py exp xxx
 
+AntRandGoalEnv
+HalfCheetahRandVelEnv
+HumanoidRandDirec2DEnv
+WalkerRandParamsWrappedEnv
+
+'''
 
 from meta_policy_search.envs.normalized_env import normalize
 from meta_policy_search.meta_algos.pro_mp import ProMP
@@ -90,6 +99,7 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser(description='ProMP: Proximal Meta-Policy Search')
     parser.add_argument('--config_file', type=str, default='', help='json file with run specifications')
     parser.add_argument('--dump_path', type=str, default=meta_policy_search_path + '/data/pro-mp/run_%d' % idx)
+    parser.add_argument('--exp', type=str)
 
     args = parser.parse_args()
 
@@ -105,7 +115,7 @@ if __name__=="__main__":
 
             'baseline': 'LinearFeatureBaseline',
 
-            'env': 'AntRandGoalEnv',
+            'env': args.exp, #'AntRandGoalEnv',
 
             # sampler config
             'rollouts_per_meta_task': 1,
