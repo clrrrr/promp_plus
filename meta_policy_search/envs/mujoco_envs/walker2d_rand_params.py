@@ -15,6 +15,7 @@ class WalkerRandParamsWrappedEnv(Walker2DRandParamsEnv, gym.utils.EzPickle): ###
         if platform == 'linux':
             line = os.environ['MUJOCO_PY_MJPRO_PATH']
             os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mujoco200', 'mjpro131')
+            print("--------------Switched to mjpro131---------------")
         elif platform == 'darwin':
             os.environ['MUJOCO_PY_MJPRO_PATH'] = '~/.mujoco/mjpro131'
         else: # win32 can only use up to 150
