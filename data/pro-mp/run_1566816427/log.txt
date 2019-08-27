@@ -1,0 +1,4 @@
+Logging to /Users/clrrrr/Develop/ProMP/data/pro-mp/run_1566816427
+
+ ---------------- Iteration 0 ----------------
+Sampling set of tasks/goals for this meta-batch...
