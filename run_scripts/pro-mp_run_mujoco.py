@@ -1,10 +1,16 @@
+# escaping check_mujoco_version() in config.py (mjpro have to == mjpro131)
+if platform == 'linux':
+    os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mjpro131"
+if platform == 'darwin':
+    os.environ['MUJOCO_PY_MJPRO_PATH'] = "~/.mujoco/mjpro131"
+
 from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
 # from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_direc import HalfCheetahRandDirecEnv
 
 from meta_policy_search.envs.mujoco_envs.ant_rand_goal import AntRandGoalEnv
 from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_vel import HalfCheetahRandVelEnv
 from meta_policy_search.envs.mujoco_envs.humanoid_rand_direc_2d import HumanoidRandDirec2DEnv
-# if import rand_params here, it will invoke check_mujoco_version() in config.py (mjpro have to == mjpro131)
+from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandParamsWrappedEnv
 
 '''
 Usage:
@@ -111,7 +117,6 @@ if __name__=="__main__":
     else: # use default config
 
         if args.exp.startswith("W"):
-            from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandParamsWrappedEnv
             if platform == 'linux':
                 os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mjpro131"
             if platform == 'darwin':

@@ -16,10 +16,22 @@
       <file leaf-file-name="pro-mp_run_mujoco.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="226">
-              <caret line="113" column="107" selection-start-line="113" selection-start-column="107" selection-end-line="113" selection-end-column="107" />
+            <state relative-caret-position="68">
+              <caret line="4" column="61" lean-forward="true" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
               <folding>
-                <element signature="e#0#78#0" expanded="true" />
+                <element signature="e#182#260#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="normalized_env.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/normalized_env.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="374">
+              <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
+              <folding>
+                <element signature="e#0#18#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -29,7 +41,7 @@
         <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="476">
-              <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+              <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -178,13 +190,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.1/python_stubs/641604745/builtins.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="2157">
-          <caret line="3959" column="6" selection-start-line="3959" selection-start-column="6" selection-end-line="3959" selection-end-column="6" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/optimizers/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="250">
@@ -195,7 +200,31 @@
     <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="476">
-          <caret line="28" column="26" lean-forward="true" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+          <caret line="28" column="26" selection-start-line="28" selection-start-column="26" selection-end-line="28" selection-end-column="26" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$USER_HOME$/Library/Caches/PyCharm2018.1/python_stubs/641604745/builtins.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="717">
+          <caret line="721" column="6" selection-start-line="721" selection-start-column="6" selection-end-line="721" selection-end-column="6" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/utils/serializable.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="136">
+          <caret line="9" column="21" lean-forward="true" selection-start-line="9" selection-start-column="21" selection-end-line="9" selection-end-column="21" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/normalized_env.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="374">
+          <caret line="22" column="37" lean-forward="true" selection-start-line="22" selection-start-column="37" selection-end-line="22" selection-end-column="37" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
           </folding>
@@ -204,10 +233,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="226">
-          <caret line="113" column="107" selection-start-line="113" selection-start-column="107" selection-end-line="113" selection-end-column="107" />
+        <state relative-caret-position="68">
+          <caret line="4" column="61" lean-forward="true" selection-start-line="4" selection-start-column="61" selection-end-line="4" selection-end-column="61" />
           <folding>
-            <element signature="e#0#78#0" expanded="true" />
+            <element signature="e#182#260#0" expanded="true" />
           </folding>
         </state>
       </provider>
