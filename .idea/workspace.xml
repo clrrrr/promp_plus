@@ -16,11 +16,20 @@
       <file leaf-file-name="pro-mp_run_mujoco.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="306">
-              <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+            <state relative-caret-position="328">
+              <caret line="122" column="12" lean-forward="true" selection-start-line="122" selection-start-column="12" selection-end-line="122" selection-end-column="48" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="walker2d_rand_params.py" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="51">
+              <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="32" />
             </state>
           </provider>
         </entry>
@@ -51,8 +60,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="39" />
-    <option name="y" value="313" />
+    <option name="x" value="53" />
+    <option name="y" value="129" />
     <option name="width" value="1730" />
     <option name="height" value="911" />
   </component>
@@ -68,6 +77,24 @@
             <path>
               <item name="promp_plus" type="b2602c69:ProjectViewProjectNode" />
               <item name="promp_plus" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="promp_plus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="promp_plus" type="462c0819:PsiDirectoryNode" />
+              <item name="meta_policy_search" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="promp_plus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="promp_plus" type="462c0819:PsiDirectoryNode" />
+              <item name="meta_policy_search" type="462c0819:PsiDirectoryNode" />
+              <item name="envs" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="promp_plus" type="b2602c69:ProjectViewProjectNode" />
+              <item name="promp_plus" type="462c0819:PsiDirectoryNode" />
+              <item name="meta_policy_search" type="462c0819:PsiDirectoryNode" />
+              <item name="envs" type="462c0819:PsiDirectoryNode" />
+              <item name="mujoco_envs" type="462c0819:PsiDirectoryNode" />
             </path>
             <path>
               <item name="promp_plus" type="b2602c69:ProjectViewProjectNode" />
@@ -113,7 +140,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="39" y="313" width="1730" height="911" extended-state="0" />
+    <frame x="53" y="129" width="1730" height="911" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -175,17 +202,15 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state>
-          <folding>
-            <element signature="e#2#20#0" expanded="true" />
-          </folding>
+        <state relative-caret-position="51">
+          <caret line="7" column="6" lean-forward="true" selection-start-line="7" selection-start-column="6" selection-end-line="7" selection-end-column="32" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="306">
-          <caret line="18" column="58" selection-start-line="18" selection-start-column="58" selection-end-line="18" selection-end-column="58" />
+        <state relative-caret-position="328">
+          <caret line="122" column="12" lean-forward="true" selection-start-line="122" selection-start-column="12" selection-end-line="122" selection-end-column="48" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
