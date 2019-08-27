@@ -4,7 +4,7 @@ from sys import platform
 
 if platform == 'linux':
     line = os.environ['MUJOCO_PY_MJPRO_PATH']
-    print("--------------Current: ",line,---------------")
+    print("--------------Current: ",line,"---------------")
     if MJ == 200:
         os.environ['MUJOCO_PY_MJPRO_PATH'] = line.replace('mjpro131', 'mujoco200')
         print("--------------Switched to mujoco200---------------")
