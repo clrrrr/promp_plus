@@ -102,11 +102,10 @@ def main(config):
     trainer.train()
 
 if __name__=="__main__":
-    idx = int(time.time())
-
+    # idx = int(time.time())
     parser = argparse.ArgumentParser(description='ProMP: Proximal Meta-Policy Search')
     parser.add_argument('--config_file', type=str, default='', help='json file with run specifications')
-    parser.add_argument('--dump_path', type=str, default=meta_policy_search_path + '/data/pro-mp/run_%d' % idx)
+    # parser.add_argument('--dump_path', type=str, default=meta_policy_search_path + '/data/pro-mp/run_%d' % idx)
     parser.add_argument('--exp', type=str)
 
     args = parser.parse_args()
@@ -114,7 +113,6 @@ if __name__=="__main__":
     if args.config_file: # load configuration from json file
         with open(args.config_file, 'r') as f:
             config = json.load(f)
-
     else: # use default config
 
         if args.exp.startswith("W"):
@@ -166,7 +164,7 @@ if __name__=="__main__":
         }
 
     #####
-    dump_path = meta_policy_search_path + "/data/pro-mp/" + args.exp + "/run_%d" % idx
+    dump_path = meta_policy_search_path + "/data/pro-mp/" + args.exp + "/run_" + time.strftime("%y%m%d_%H%M%S", time.localtime())
 
     # configure logger
     logger.configure(dir=dump_path, format_strs=['stdout', 'log', 'csv'],

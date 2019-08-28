@@ -48,6 +48,10 @@ class MetaSampler(Sampler):
         else:
             self.vec_env = MetaIterativeEnvExecutor(env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
 
+    def update_batch_size(self, batch_size):
+        self.batch_size = batch_size
+        self.total_samples = self.meta_batch_size * batch_size * self.max_path_length
+
     def update_tasks(self):
         """
         Samples a new goal for each meta task
@@ -56,7 +60,7 @@ class MetaSampler(Sampler):
         assert len(tasks) == self.meta_batch_size
         self.vec_env.set_tasks(tasks)
 
-    def obtain_samples(self, log=False, log_prefix=''):
+    def obtain_samples(self, log=False, log_prefix='', test=False):
 
         print("--------------obtaining samples--------------")
 
@@ -132,10 +136,9 @@ class MetaSampler(Sampler):
             obses = next_obses
         pbar.stop()
 
-        self.total_timesteps_sampled += self.total_samples
-
-
-        print("------------self.total_timesteps_sampled:", self.total_timesteps_sampled, "-----------------")
+        if not test:
+            self.total_timesteps_sampled += self.total_samples
+            print("------------self.total_timesteps_sampled:", self.total_timesteps_sampled, "-----------------")
 
 
         if log:
