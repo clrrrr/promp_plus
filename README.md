@@ -2,9 +2,11 @@
 
 ## Train:
 
-python run_scripts/pro-mp_run_mujoco.py —exp xxx
+python run_scripts/pro-mp_run_mujoco.py —exp AntRandGoal --rollouts_per_meta_task 5
 
-e.g. AntRandGoal
+Envs:
+
+AntRandGoal
 
 HalfCheetahRandVel
 

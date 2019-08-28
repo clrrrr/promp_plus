@@ -107,6 +107,7 @@ if __name__=="__main__":
     parser.add_argument('--config_file', type=str, default='', help='json file with run specifications')
     # parser.add_argument('--dump_path', type=str, default=meta_policy_search_path + '/data/pro-mp/run_%d' % idx)
     parser.add_argument('--exp', type=str)
+    parser.add_argument('--rollouts_per_meta_task', type=int, default=1)
 
     args = parser.parse_args()
 
@@ -136,7 +137,7 @@ if __name__=="__main__":
             'env': env_name, #'AntRandGoalEnv',
 
             # sampler config
-            'rollouts_per_meta_task': 1,
+            'rollouts_per_meta_task': args.rollouts_per_meta_task,
             'max_path_length': 200,
             'parallel': True,
 
@@ -157,7 +158,7 @@ if __name__=="__main__":
             'target_inner_step': 0.01,
             'init_inner_kl_penalty': 5e-4,
             'adaptive_inner_kl_penalty': False, # whether to use an adaptive or fixed KL-penalty coefficient
-            'n_itr': 1001, # number of overall training iterations
+            'n_itr': 10001, # number of overall training iterations #1001
             'meta_batch_size': 5, # number of sampled meta-tasks per iterations
             'num_inner_grad_steps': 1, # number of inner / adaptation gradient steps
 
