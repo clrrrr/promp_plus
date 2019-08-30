@@ -103,17 +103,20 @@ if __name__=="__main__":
             config = json.load(f)
     else: # use default config
 
+        meta_batch_size = 100
         if args.exp.startswith("W"):
             if platform == 'linux':
                 os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mjpro131"
             if platform == 'darwin':
                 os.environ['MUJOCO_PY_MJPRO_PATH'] = "/Users/clrrrr/.mujoco/mjpro131"
+                meta_batch_size = 5
             env_name = args.exp + "WrappedEnv"
         else:
             if platform == 'linux':
                 os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mujoco200"
             if platform == 'darwin':
                 os.environ['MUJOCO_PY_MJPRO_PATH'] = "/Users/clrrrr/.mujoco/mujoco200"
+                meta_batch_size = 5
             env_name = args.exp + "Env"
 
         #config = json.load(open(maml_zoo_path + "/configs/rl2_config.json", 'r'))
@@ -121,7 +124,7 @@ if __name__=="__main__":
             "algo": "RL2",
             'env': env_name,  # 'AntRandGoalEnv',
 
-            "meta_batch_size": 100, #200！
+            "meta_batch_size": meta_batch_size, #200！
             "hidden_sizes": [64],
 
             "rollouts_per_meta_task": 2,

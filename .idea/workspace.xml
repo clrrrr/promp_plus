@@ -2,12 +2,9 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da1dbff-9f90-4cb6-a78d-8c0c9055443b" name="Default" comment="">
-      <change afterPath="$PROJECT_DIR$/meta_policy_search/tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/meta_tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/meta_tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sample_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sample_processor.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_scripts/rl2_run_mujoco_test.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_scripts/rl2_run_mujoco_test.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -21,8 +18,8 @@
       <file leaf-file-name="rl2_run_mujoco.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-31">
-              <caret line="88" column="19" lean-forward="true" selection-start-line="45" selection-end-line="88" selection-end-column="19" />
+            <state relative-caret-position="581">
+              <caret line="130" column="29" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -34,7 +31,7 @@
         <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="393">
-              <caret line="159" column="73" lean-forward="true" selection-start-line="159" selection-start-column="73" selection-end-line="159" selection-end-column="73" />
+              <caret line="159" column="73" selection-start-line="159" selection-start-column="73" selection-end-line="159" selection-end-column="73" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -42,14 +39,23 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="base.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="156">
-              <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
+            <state relative-caret-position="343">
+              <caret line="146" column="59" selection-start-line="146" selection-start-column="39" selection-end-line="146" selection-end-column="59" />
               <folding>
                 <element signature="e#0#50#0" expanded="true" />
               </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="base.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="270">
+              <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
             </state>
           </provider>
         </entry>
@@ -58,7 +64,7 @@
         <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/meta_sample_processor.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="602">
-              <caret line="46" column="115" selection-start-line="46" selection-start-column="115" selection-end-line="46" selection-end-column="115" />
+              <caret line="46" column="116" selection-start-line="46" selection-start-column="88" selection-end-line="46" selection-end-column="116" />
             </state>
           </provider>
         </entry>
@@ -66,8 +72,8 @@
       <file leaf-file-name="rl2_sample_processor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="793">
-              <caret line="49" selection-start-line="49" selection-end-line="49" selection-end-column="71" />
+            <state relative-caret-position="610">
+              <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
             </state>
           </provider>
         </entry>
@@ -76,7 +82,7 @@
         <entry file="file://$PROJECT_DIR$/meta_policy_search/utils/logger.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="2652">
-              <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
+              <caret line="165" selection-start-line="165" selection-end-line="165" />
             </state>
           </provider>
         </entry>
@@ -117,23 +123,10 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="trainer.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/meta_policy_search/trainer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="153">
-              <caret line="9" lean-forward="true" selection-end-line="130" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
     </leaf>
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>numtrajs</find>
       <find>NumTrajs</find>
       <find>.logkv</find>
       <find>dump_path</find>
@@ -163,6 +156,7 @@
       <find>all_samples_data</find>
       <find>._log_path</find>
       <find>roll</find>
+      <find>process</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -190,21 +184,21 @@
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2_base.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/__init__.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/utils.py" />
-        <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/utils/rl2/__init__.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/meta_sample_processor.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/dice_sample_processor.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/meta_sampler.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/maml_sampler.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" />
-        <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" />
-        <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" />
         <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco_test.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/tester.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/meta_tester.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/meta_sample_processor.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/base.py" />
+        <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py" />
+        <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" />
+        <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" />
       </list>
     </option>
   </component>
@@ -608,13 +602,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="392">
-          <caret line="149" selection-start-line="149" selection-end-line="150" selection-end-column="84" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_trainer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="504">
@@ -645,7 +632,7 @@
     <entry file="file://$PROJECT_DIR$/meta_policy_search/trainer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="153">
-          <caret line="9" lean-forward="true" selection-end-line="130" />
+          <caret line="9" selection-end-line="130" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -665,7 +652,7 @@
     <entry file="file://$PROJECT_DIR$/meta_policy_search/utils/logger.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2652">
-          <caret line="165" lean-forward="true" selection-start-line="165" selection-end-line="165" />
+          <caret line="165" selection-start-line="165" selection-end-line="165" />
         </state>
       </provider>
     </entry>
@@ -689,27 +676,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="793">
-          <caret line="49" selection-start-line="49" selection-end-line="49" selection-end-column="71" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31">
-          <caret line="88" column="19" lean-forward="true" selection-start-line="45" selection-end-line="88" selection-end-column="19" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="393">
-          <caret line="159" column="73" lean-forward="true" selection-start-line="159" selection-start-column="73" selection-end-line="159" selection-end-column="73" />
+          <caret line="159" column="73" selection-start-line="159" selection-start-column="73" selection-end-line="159" selection-end-column="73" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
@@ -719,17 +689,41 @@
     <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/meta_sample_processor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="602">
-          <caret line="46" column="115" selection-start-line="46" selection-start-column="115" selection-end-line="46" selection-end-column="115" />
+          <caret line="46" column="116" selection-start-line="46" selection-start-column="88" selection-end-line="46" selection-end-column="116" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="610">
+          <caret line="49" column="24" selection-start-line="49" selection-start-column="24" selection-end-line="49" selection-end-column="24" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="581">
+          <caret line="130" column="29" selection-start-line="130" selection-start-column="29" selection-end-line="130" selection-end-column="29" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/base.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="156">
-          <caret line="135" column="27" lean-forward="true" selection-start-line="135" selection-start-column="27" selection-end-line="135" selection-end-column="27" />
+        <state relative-caret-position="343">
+          <caret line="146" column="59" selection-start-line="146" selection-start-column="39" selection-end-line="146" selection-end-column="59" />
           <folding>
             <element signature="e#0#50#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="270">
+          <caret line="147" lean-forward="true" selection-start-line="147" selection-end-line="147" />
         </state>
       </provider>
     </entry>

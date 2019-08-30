@@ -135,7 +135,7 @@ class SampleProcessor(object):
 
         return samples_data, paths
 
-    def _log_path_stats(self, paths, log=False, log_prefix=''):
+    def _log_path_stats(self, paths, log=False, log_prefix='', meta_batch_size=0):
         # compute log stats
         average_discounted_return = np.mean([path["returns"][0] for path in paths])
         undiscounted_returns = [sum(path["rewards"]) for path in paths]
@@ -147,7 +147,8 @@ class SampleProcessor(object):
             logger.logkv(log_prefix + 'AverageDiscountedReturn', average_discounted_return)
 
             logger.logkv(log_prefix + 'AverageReturn', np.mean(undiscounted_returns))
-            logger.logkv(log_prefix + 'AverageReturn-2', np.mean(undiscounted_returns[-2:]))
+            logger.logkv(log_prefix + 'AverageReturn-2', np.mean(undiscounted_returns[-2*meta_batch_size:]))
+            # will take undiscounted[-meta_batch_size:] when rollouts_per_meta_task < 2
             logger.log("AverageReturn-2 is estimated by the last 2 trajectories...")
 
             logger.logkv(log_prefix + 'NumTrajs', len(paths))
