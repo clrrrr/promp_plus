@@ -96,6 +96,7 @@ class Trainer(object):
                     logger.log("Obtaining samples...")
                     time_env_sampling_start = time.time()
 
+                    '''
                     if step == self.num_inner_grad_steps:
                         temp = self.sampler.batch_size
                         self.sampler.update_batch_size(2)
@@ -103,6 +104,9 @@ class Trainer(object):
                         self.sampler.update_batch_size(temp)
                     else:
                         paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step)
+                    '''
+                    paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step)
+
 
                     list_sampling_time.append(time.time() - time_env_sampling_start)
                     all_paths.append(paths)

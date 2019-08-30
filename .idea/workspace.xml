@@ -1,12 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1da1dbff-9f90-4cb6-a78d-8c0c9055443b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" afterDir="false" />
-    </list>
+    <list default="true" id="1da1dbff-9f90-4cb6-a78d-8c0c9055443b" name="Default" comment="" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -19,8 +14,8 @@
       <file leaf-file-name="rl2_run_mujoco.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="255">
-              <caret line="67" column="35" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
+            <state relative-caret-position="484">
+              <caret line="134" column="34" selection-start-line="134" selection-start-column="34" selection-end-line="134" selection-end-column="34" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -31,8 +26,8 @@
       <file leaf-file-name="rl2_sample_processor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="401">
-              <caret line="48" column="16" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="16" />
+            <state relative-caret-position="435">
+              <caret line="49" selection-start-line="49" selection-end-line="49" selection-end-column="71" />
             </state>
           </provider>
         </entry>
@@ -40,16 +35,16 @@
       <file leaf-file-name="base.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="422">
-              <caret line="149" column="12" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="82" />
+            <state relative-caret-position="392">
+              <caret line="149" selection-start-line="149" selection-end-line="150" selection-end-column="84" />
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="pro-mp_run_mujoco.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="pro-mp_run_mujoco.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="162">
+            <state relative-caret-position="-610">
               <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
@@ -58,11 +53,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="meta_trainer.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="meta_trainer.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_trainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="504">
-              <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+            <state relative-caret-position="521">
+              <caret line="109" column="85" selection-start-line="109" selection-start-column="85" selection-end-line="109" selection-end-column="85" />
             </state>
           </provider>
         </entry>
@@ -116,7 +111,7 @@
         <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/meta_sample_processor.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="357">
-              <caret line="24" column="73" lean-forward="true" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
+              <caret line="24" column="73" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
             </state>
           </provider>
         </entry>
@@ -139,11 +134,11 @@
       <find>parallel</find>
       <find>seed</find>
       <find>diagonal_</find>
-      <find>base import</find>
-      <find>base2 import sampler</find>
-      <find>base import sampler</find>
+      <find />
+      <find />
+      <find />
       <find>maml_sampler</find>
-      <find>utils import utils</find>
+      <find />
       <find>self.total_samples</find>
       <find>self.meta_</find>
       <find>self.meta_batch_size</find>
@@ -190,11 +185,11 @@
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/meta_sampler.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/maml_sampler.py" />
         <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco_test.py" />
-        <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/meta_tester.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" />
+        <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" />
       </list>
     </option>
   </component>
@@ -208,8 +203,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="13" />
-    <option name="y" value="59" />
+    <option name="x" value="11" />
+    <option name="y" value="95" />
     <option name="width" value="1882" />
     <option name="height" value="934" />
   </component>
@@ -324,7 +319,7 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="13" y="59" width="1882" height="934" extended-state="0" />
+    <frame x="27" y="218" width="1882" height="934" extended-state="0" />
     <editor active="true" />
     <layout>
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -669,48 +664,48 @@
     <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/meta_sample_processor.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="357">
-          <caret line="24" column="73" lean-forward="true" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="401">
-          <caret line="48" column="16" selection-start-line="48" selection-start-column="13" selection-end-line="48" selection-end-column="16" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="255">
-          <caret line="67" column="35" selection-start-line="67" selection-start-column="35" selection-end-line="67" selection-end-column="35" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="422">
-          <caret line="149" column="12" selection-start-line="149" selection-start-column="12" selection-end-line="149" selection-end-column="82" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="162">
-          <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
+          <caret line="24" column="73" selection-start-line="24" selection-start-column="73" selection-end-line="24" selection-end-column="73" />
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_trainer.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="504">
-          <caret line="108" lean-forward="true" selection-start-line="108" selection-end-line="108" />
+        <state relative-caret-position="521">
+          <caret line="109" column="85" selection-start-line="109" selection-start-column="85" selection-end-line="109" selection-end-column="85" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="484">
+          <caret line="134" column="34" selection-start-line="134" selection-start-column="34" selection-end-line="134" selection-end-column="34" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="435">
+          <caret line="49" selection-start-line="49" selection-end-line="49" selection-end-column="71" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="392">
+          <caret line="149" selection-start-line="149" selection-end-line="150" selection-end-column="84" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-610">
+          <caret line="100" column="16" selection-start-line="100" selection-start-column="16" selection-end-line="100" selection-end-column="16" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
