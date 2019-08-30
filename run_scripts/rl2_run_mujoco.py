@@ -7,33 +7,29 @@ if platform == 'linux':
 if platform == 'darwin':
     os.environ['MUJOCO_PY_MJPRO_PATH'] = "/Users/clrrrr/.mujoco/mjpro131"
 
-from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
-# from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_direc import HalfCheetahRandDirecEnv
 
+from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
+from meta_policy_search.envs.rl2_env import rl2env
+from meta_policy_search.algos.vpg import VPG
+from meta_policy_search.algos.ppo import PPO
+from meta_policy_search.trainer import Trainer
+from meta_policy_search.samplers.rl2.maml_sampler import MAMLSampler
+from meta_policy_search.samplers.rl2.rl2_sample_processor import RL2SampleProcessor
+from meta_policy_search.policies.meta_gaussian_mlp_policy import MetaGaussianMLPPolicy
+from meta_policy_search.policies.gaussian_rnn_policy import GaussianRNNPolicy
+import os
+from meta_policy_search.utils import logger
+from meta_policy_search.utils.utils import set_seed, ClassEncoder
+import json
+import numpy as np
+
+
+#from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_direc import HalfCheetahRandDirecEnv
 from meta_policy_search.envs.mujoco_envs.ant_rand_goal import AntRandGoalEnv
 from meta_policy_search.envs.mujoco_envs.half_cheetah_rand_vel import HalfCheetahRandVelEnv
 from meta_policy_search.envs.mujoco_envs.humanoid_rand_direc_2d import HumanoidRandDirec2DEnv
 from meta_policy_search.envs.mujoco_envs.walker2d_rand_params import WalkerRandParamsWrappedEnv
 
-'''
-Usage:
-python run_scripts/pro-mp_run_mujoco.py --exp xxx
-
-AntRandGoal
-HalfCheetahRandVel
-HumanoidRandDirec2D
-WalkerRandParamsWrapped
-
-'''
-
-from meta_policy_search.envs.normalized_env import normalize
-from meta_policy_search.meta_algos.pro_mp import ProMP
-from meta_policy_search.meta_trainer import Trainer
-from meta_policy_search.samplers.meta_sampler import MetaSampler
-from meta_policy_search.samplers.meta_sample_processor import MetaSampleProcessor
-from meta_policy_search.policies.meta_gaussian_mlp_policy import MetaGaussianMLPPolicy
-from meta_policy_search.utils import logger
-from meta_policy_search.utils.utils import set_seed, ClassEncoder
 
 import numpy as np
 import tensorflow as tf
@@ -44,48 +40,43 @@ import time
 meta_policy_search_path = '/'.join(os.path.realpath(os.path.dirname(__file__)).split('/')[:-1])
 
 def main(config):
-    set_seed(config['seed'])
 
-    baseline =  globals()[config['baseline']]() #instantiate baseline
+    baseline = LinearFeatureBaseline()
+    #env = rl2env(HalfCheetahRandDirecEnv())
+    env = rl2env(globals()[config['env']]())  # instantiate env
+    obs_dim = np.prod(env.observation_space.shape) + np.prod(env.action_space.shape) + 1 + 1
 
-    env = globals()[config['env']]() # instantiate env
-    env = normalize(env) # apply normalize wrapper to env
-
-    policy = MetaGaussianMLPPolicy(
+    policy = GaussianRNNPolicy(
             name="meta-policy",
-            obs_dim=np.prod(env.observation_space.shape),
+            obs_dim=obs_dim,
             action_dim=np.prod(env.action_space.shape),
             meta_batch_size=config['meta_batch_size'],
             hidden_sizes=config['hidden_sizes'],
+            cell_type=config['cell_type']
         )
 
-    sampler = MetaSampler(
+    sampler = MAMLSampler(
         env=env,
         policy=policy,
         rollouts_per_meta_task=config['rollouts_per_meta_task'],  # This batch_size is confusing
         meta_batch_size=config['meta_batch_size'],
         max_path_length=config['max_path_length'],
         parallel=config['parallel'],
+        envs_per_task=1,
     )
 
-    sample_processor = MetaSampleProcessor(
+    sample_processor = RL2SampleProcessor(
         baseline=baseline,
         discount=config['discount'],
         gae_lambda=config['gae_lambda'],
         normalize_adv=config['normalize_adv'],
+        positive_adv=config['positive_adv'],
     )
 
-    algo = ProMP(
+    algo = PPO(
         policy=policy,
-        inner_lr=config['inner_lr'],
-        meta_batch_size=config['meta_batch_size'],
-        num_inner_grad_steps=config['num_inner_grad_steps'],
         learning_rate=config['learning_rate'],
-        num_ppo_steps=config['num_promp_steps'],
-        clip_eps=config['clip_eps'],
-        target_inner_step=config['target_inner_step'],
-        init_inner_kl_penalty=config['init_inner_kl_penalty'],
-        adaptive_inner_kl_penalty=config['adaptive_inner_kl_penalty'],
+        max_epochs=config['max_epochs']
     )
 
     trainer = Trainer(
@@ -95,16 +86,14 @@ def main(config):
         sampler=sampler,
         sample_processor=sample_processor,
         n_itr=config['n_itr'],
-        num_inner_grad_steps=config['num_inner_grad_steps'],
     )
-
     trainer.train()
 
+
 if __name__=="__main__":
-    # idx = int(time.time())
-    parser = argparse.ArgumentParser(description='ProMP: Proximal Meta-Policy Search')
+
+    parser = argparse.ArgumentParser(description='RL2')
     parser.add_argument('--config_file', type=str, default='', help='json file with run specifications')
-    # parser.add_argument('--dump_path', type=str, default=meta_policy_search_path + '/data/pro-mp/run_%d' % idx)
     parser.add_argument('--exp', type=str)
     parser.add_argument('--rollouts_per_meta_task', type=int, default=1)
 
@@ -128,42 +117,30 @@ if __name__=="__main__":
                 os.environ['MUJOCO_PY_MJPRO_PATH'] = "/Users/clrrrr/.mujoco/mujoco200"
             env_name = args.exp + "Env"
 
+        #config = json.load(open(maml_zoo_path + "/configs/rl2_config.json", 'r'))
         config = {
-            'seed': 1,
+            "algo": "RL2",
+            'env': env_name,  # 'AntRandGoalEnv',
 
-            'baseline': 'LinearFeatureBaseline',
+            "meta_batch_size": 5, #200！
+            "hidden_sizes": [64],
 
-            'env': env_name, #'AntRandGoalEnv',
+            "rollouts_per_meta_task": 2,
+            "parallel": True,
+            "max_path_length": 200, #100
+            "n_itr": 1000,
 
-            # sampler config
-            'rollouts_per_meta_task': args.rollouts_per_meta_task,
-            'max_path_length': 200,
-            'parallel': True,
-
-            # sample processor config
-            'discount': 0.99,
-            'gae_lambda': 1,
-            'normalize_adv': True,
-
-            # policy config
-            'hidden_sizes': (64, 64),
-            'learn_std': True, # whether to learn the standard deviation of the gaussian policy
-
-            # ProMP config
-            'inner_lr': 0.1, # adaptation step size
-            'learning_rate': 1e-3, # meta-policy gradient step size
-            'num_promp_steps': 5, # number of ProMp steps without re-sampling
-            'clip_eps': 0.3, # clipping range
-            'target_inner_step': 0.01,
-            'init_inner_kl_penalty': 5e-4,
-            'adaptive_inner_kl_penalty': False, # whether to use an adaptive or fixed KL-penalty coefficient
-            'n_itr': 10001, # number of overall training iterations #1001
-            'meta_batch_size': 5, # number of sampled meta-tasks per iterations
-            'num_inner_grad_steps': 1, # number of inner / adaptation gradient steps
-
+            "discount": 0.99,
+            "gae_lambda": 1.0,
+            "normalize_adv": True,
+            "positive_adv": False,
+            "learning_rate": 1e-3,
+            "max_epochs": 5,
+            "cell_type": "lstm",
+            "num_minibatches": 1,
         }
 
-    dump_path = meta_policy_search_path + "/data/pro-mp/" + args.exp + "/run_" + time.strftime("%y%m%d_%H%M%S", time.localtime())
+    dump_path = meta_policy_search_path + "/data/rl2/" + args.exp + "/run_" + time.strftime("%y%m%d_%H%M%S", time.localtime())
 
     # configure logger
     logger.configure(dir=dump_path, format_strs=['stdout', 'log', 'csv'],
@@ -174,3 +151,5 @@ if __name__=="__main__":
 
     # start the actual algorithm
     main(config)
+
+
