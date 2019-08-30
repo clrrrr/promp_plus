@@ -122,7 +122,7 @@ if __name__=="__main__":
             "algo": "RL2",
             'env': env_name,  # 'AntRandGoalEnv',
 
-            "meta_batch_size": 200, #200！
+            "meta_batch_size": 100, #200！
             "hidden_sizes": [64],
 
             "rollouts_per_meta_task": 2,

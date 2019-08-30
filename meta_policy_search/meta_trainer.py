@@ -88,13 +88,22 @@ class Trainer(object):
                 list_sampling_time, list_inner_step_time, list_outer_step_time, list_proc_samples_time = [], [], [], []
                 start_total_inner_time = time.time()
                 for step in range(self.num_inner_grad_steps+1):
+
                     logger.log('** Step ' + str(step) + ' **')
 
                     """ -------------------- Sampling --------------------------"""
 
                     logger.log("Obtaining samples...")
                     time_env_sampling_start = time.time()
-                    paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step)
+
+                    if step == self.num_inner_grad_steps:
+                        temp = self.sampler.batch_size
+                        self.sampler.update_batch_size(2)
+                        paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step)
+                        self.sampler.update_batch_size(temp)
+                    else:
+                        paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step)
+
                     list_sampling_time.append(time.time() - time_env_sampling_start)
                     all_paths.append(paths)
 

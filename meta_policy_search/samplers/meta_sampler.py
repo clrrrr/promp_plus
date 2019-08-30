@@ -60,7 +60,7 @@ class MetaSampler(Sampler):
         assert len(tasks) == self.meta_batch_size
         self.vec_env.set_tasks(tasks)
 
-    def obtain_samples(self, log=False, log_prefix='', test=False):
+    def obtain_samples(self, log=False, log_prefix='', test=0):
 
         print("--------------obtaining samples--------------")
 
@@ -74,6 +74,7 @@ class MetaSampler(Sampler):
         Returns: 
             (dict) : A dict of paths of size [meta_batch_size] x (batch_size) x [5] x (max_path_length)
         """
+
 
         # initial setup / preparation
         paths = OrderedDict()
