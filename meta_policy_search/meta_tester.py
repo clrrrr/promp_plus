@@ -35,7 +35,7 @@ class Tester(object):
 
             with self.sess.as_default() as sess:
 
-                logger.log("----------- Testing rollouts_per_meta_task = ", i, " -----------")
+                logger.log("----------- Adaptation rollouts per meta-task = ", i, " -----------")
                 #self.sampler.rollouts_per_meta_task = 10000
                 self.sampler.update_batch_size(i)
 
@@ -53,7 +53,7 @@ class Tester(object):
                 self.sampler.update_tasks()  # sample tasks!
                 self.policy.switch_to_pre_update()  # Switch to pre-update policy
 
-                all_samples_data, all_paths = [], []
+                #all_samples_data, all_paths = [], []
                 # list_sampling_time, list_inner_step_time, list_outer_step_time, list_proc_samples_time = [], [], [], []
                 # start_total_inner_time = time.time()
 
@@ -68,18 +68,22 @@ class Tester(object):
 
                     if step < self.num_inner_grad_steps:
                         paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step)
+                        print("step0-rollouts:", len(paths[0]))
                     else:
+                        # sample 2 trajectories for eval
+                        self.sampler.update_batch_size(2)
                         paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step, test=True)
+                        print("step1-rollouts:", len(paths[0]))
 
                         # list_sampling_time.append(time.time() - time_env_sampling_start)
-                    all_paths.append(paths)
+                    #all_paths.append(paths)
 
                     """ ----------------- Processing Samples ---------------------"""
 
                     logger.log("Processing samples...")
                     # time_proc_samples_start = time.time()
                     samples_data = self.sample_processor.process_samples(paths, log='all', log_prefix='Step_%d-' % step)
-                    all_samples_data.append(samples_data)
+                    #all_samples_data.append(samples_data)
                     # list_proc_samples_time.append(time.time() - time_proc_samples_start)
 
                     self.log_diagnostics(sum(list(paths.values()), []), prefix='Step_%d-' % step)

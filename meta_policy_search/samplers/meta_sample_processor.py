@@ -44,7 +44,7 @@ class MetaSampleProcessor(SampleProcessor):
             samples_data['adj_avg_rewards'] = (samples_data['rewards'] - overall_avg_reward) / (overall_avg_reward_std + 1e-8)
 
         # 8) log statistics if desired
-        self._log_path_stats(all_paths, log=log, log_prefix=log_prefix)
+        self._log_path_stats(all_paths, log=log, log_prefix=log_prefix, meta_batch_size=len(samples_data_meta_batch))
 
         return samples_data_meta_batch
 

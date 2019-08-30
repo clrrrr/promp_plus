@@ -7,7 +7,6 @@ if platform == 'linux':
 if platform == 'darwin':
     os.environ['MUJOCO_PY_MJPRO_PATH'] = "/Users/clrrrr/.mujoco/mjpro131"
 
-
 from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
 from meta_policy_search.envs.rl2_env import rl2env
 from meta_policy_search.algos.vpg import VPG

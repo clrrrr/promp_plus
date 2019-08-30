@@ -11,7 +11,7 @@ from meta_policy_search.baselines.linear_baseline import LinearFeatureBaseline
 from meta_policy_search.envs.rl2_env import rl2env
 from meta_policy_search.algos.vpg import VPG
 from meta_policy_search.algos.ppo import PPO
-from meta_policy_search.trainer import Trainer
+from meta_policy_search.tester import Tester
 from meta_policy_search.samplers.rl2.maml_sampler import MAMLSampler
 from meta_policy_search.samplers.rl2.rl2_sample_processor import RL2SampleProcessor
 from meta_policy_search.policies.meta_gaussian_mlp_policy import MetaGaussianMLPPolicy
@@ -49,33 +49,30 @@ def main(config):
         env = data['env']
         baseline = data['baseline']
 
-        sampler = MetaSampler(
+        obs_dim = np.prod(env.observation_space.shape) + np.prod(env.action_space.shape) + 1 + 1
+
+        sampler = MAMLSampler(
             env=env,
             policy=policy,
-            rollouts_per_meta_task=config['rollouts_per_meta_task'],  # Will be modified later
+            rollouts_per_meta_task=config['rollouts_per_meta_task'],  # This batch_size is confusing
             meta_batch_size=config['meta_batch_size'],
             max_path_length=config['max_path_length'],
             parallel=config['parallel'],
+            envs_per_task=1,
         )
 
-        sample_processor = MetaSampleProcessor(
+        sample_processor = RL2SampleProcessor(
             baseline=baseline,
             discount=config['discount'],
             gae_lambda=config['gae_lambda'],
             normalize_adv=config['normalize_adv'],
+            positive_adv=config['positive_adv'],
         )
 
-        algo = ProMP(
+        algo = PPO(
             policy=policy,
-            inner_lr=config['inner_lr'],
-            meta_batch_size=config['meta_batch_size'],
-            num_inner_grad_steps=config['num_inner_grad_steps'],
             learning_rate=config['learning_rate'],
-            num_ppo_steps=config['num_promp_steps'],
-            clip_eps=config['clip_eps'],
-            target_inner_step=config['target_inner_step'],
-            init_inner_kl_penalty=config['init_inner_kl_penalty'],
-            adaptive_inner_kl_penalty=config['adaptive_inner_kl_penalty'],
+            max_epochs=config['max_epochs']
         )
 
         tester = Tester(
@@ -84,9 +81,7 @@ def main(config):
             env=env,
             sampler=sampler,
             sample_processor=sample_processor,
-            #n_itr=config['n_itr'],
             eff=config['eff'],
-            num_inner_grad_steps=config['num_inner_grad_steps'],
         )
 
         tester.train()
@@ -103,7 +98,7 @@ if __name__=="__main__":
 
     args = parser.parse_args()
 
-    load_path = meta_policy_search_path + "/data/pro-mp/" + args.dir
+    load_path = meta_policy_search_path + "/data/rl2/" + args.dir
     dump_path = load_path.replace("run", "test")
 
     if args.config_file: # load configuration from json file
