@@ -147,8 +147,8 @@ class Trainer(object):
                 #####self.sampler.update_batch_size(2) ####################
 
                 undiscounted_returns = []
-                for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
-
+                #for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
+                for i in range(1):
                     self.sampler.update_tasks(test=True, start_from=i)  # sample from test split!
                     self.policy.switch_to_pre_update()  # Switch to pre-update policy
 
