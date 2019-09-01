@@ -60,3 +60,11 @@ class RL2SampleProcessor(SampleProcessor):
             agent_infos=agent_infos,
         )
         return samples_data
+
+    def gao_paths(self, paths_meta_batch):
+        all_paths = []
+        for meta_task, paths in paths_meta_batch.items():
+            # fits baseline, compute advantages and stack path data
+            _, paths = self._compute_samples_data(paths)
+            all_paths.extend(paths)
+        return all_paths

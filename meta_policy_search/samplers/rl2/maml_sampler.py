@@ -42,6 +42,8 @@ class MAMLSampler(Sampler):
         self.parallel = parallel
         self.total_timesteps_sampled = 0
 
+        self.env = env  ########### add this for update_batch_size()
+
         # setup vectorized environment
 
         if self.parallel:
@@ -49,23 +51,36 @@ class MAMLSampler(Sampler):
         else:
             self.vec_env = MAMLIterativeEnvExecutor(env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
 
-    def update_batch_size(self, batch_size): # not checked
+    def update_batch_size(self, batch_size): # num of rollouts per task
         self.batch_size = batch_size
+        #self.envs_per_task = batch_size
         self.total_samples = self.meta_batch_size * batch_size * self.max_path_length
+        '''
+        if self.parallel:
+            self.vec_env = MAMLParallelEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
+        else:
+            self.vec_env = MAMLIterativeEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
+        '''
 
-    def update_tasks(self):
+    def update_tasks(self, test=False, start_from=0):
         """
         Samples a new goal for each meta task
         """
-        tasks = self.env.sample_tasks(self.meta_batch_size)
-        assert len(tasks) == self.meta_batch_size
+        if not test:
+            tasks = self.env.sample_tasks(self.meta_batch_size)
+            assert len(tasks) == self.meta_batch_size
+        else:
+            tasks = self.env.sample_tasks(self.meta_batch_size, is_eval=True, start_from=start_from)
         self.vec_env.set_tasks(tasks)
 
     def set_tasks(self, tasks):
         assert len(tasks) == self.meta_batch_size
         self.vec_env.set_tasks(tasks)
 
-    def obtain_samples(self, log=False, log_prefix=''):
+    def obtain_samples(self, log=False, log_prefix='', test=False):
+        print("--------------obtaining", self.total_samples // self.meta_batch_size // self.max_path_length,
+              "rollouts_per_task, for", self.meta_batch_size, "tasks..--------------")
+
         """
         Collect batch_size trajectories from each task
 
@@ -84,6 +99,8 @@ class MAMLSampler(Sampler):
 
         n_samples = 0
         running_paths = [_get_empty_running_paths_dict() for _ in range(self.vec_env.num_envs)]
+        print("=========runnng_paths length:", len(running_paths), "=========")
+
 
         pbar = ProgBar(self.total_samples)
         policy_time, env_time = 0, 0
@@ -143,7 +160,10 @@ class MAMLSampler(Sampler):
             obses = next_obses
         pbar.stop()
 
-        self.total_timesteps_sampled += self.total_samples
+        if not test:
+            self.total_timesteps_sampled += self.total_samples
+            print("------------self.total_timesteps_sampled:", self.total_timesteps_sampled, "-----------------")
+
         if log:
             logger.logkv(log_prefix + "PolicyExecTime", policy_time)
             logger.logkv(log_prefix + "EnvExecTime", env_time)

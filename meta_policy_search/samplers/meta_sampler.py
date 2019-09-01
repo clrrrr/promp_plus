@@ -41,7 +41,6 @@ class MetaSampler(Sampler):
         self.parallel = parallel
         self.total_timesteps_sampled = 0
 
-
         self.env = env ########### add this for update_batch_size()
 
         # setup vectorized environment
@@ -78,7 +77,8 @@ class MetaSampler(Sampler):
 
     def obtain_samples(self, log=False, log_prefix='', test=False):
 
-        print("--------------obtaining", self.total_samples//self.meta_batch_size//self.max_path_length, "rollouts_per_task, for", self.meta_batch_size, "tasks..--------------")
+        print("--------------obtaining", self.total_samples//self.meta_batch_size//self.max_path_length,
+              "rollouts_per_task, for", self.meta_batch_size, "tasks..--------------")
 
         """
         Collect batch_size trajectories from each task
@@ -99,7 +99,7 @@ class MetaSampler(Sampler):
         n_samples = 0
 
         running_paths = [_get_empty_running_paths_dict() for _ in range(self.vec_env.num_envs)]
-        print("runnng_paths length: ", len(running_paths), "=========")
+        print("=========runnng_paths length:", len(running_paths), "=========")
 
         pbar = ProgBar(self.total_samples)
         policy_time, env_time = 0, 0

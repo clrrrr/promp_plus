@@ -147,7 +147,6 @@ class Trainer(object):
                 self.sampler.update_batch_size(2) ####################
 
                 undiscounted_returns = []
-
                 for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
 
                     self.sampler.update_tasks(test=True, start_from=i)  # sample from test split!
@@ -157,11 +156,7 @@ class Trainer(object):
                         logger.log("On Test: Obtaining samples...")
                         paths = self.sampler.obtain_samples(log=False, test=True) # log_prefix='test-Step_%d-' % step
 
-                        #print(len(paths),"----=====-------======-----")
-                        #print(len(paths[0]))
-
                         logger.log("On Test: Processing Samples...")
-
                         samples_data = self.sample_processor.process_samples(paths, log=False) # log='all', log_prefix='test-Step_%d-' % step
                         self.log_diagnostics(sum(list(paths.values()), []), prefix='test-Step_%d-' % step)
 
@@ -175,11 +170,6 @@ class Trainer(object):
 
                 test_average_return = np.mean(undiscounted_returns)
                 self.sampler.update_batch_size(sampler_batch_size)
-
-                '''
-                self.sampler.update_meta_batch_size(sampler_meta_batch_size)
-                self.policy.update_meta_batch_size(policy_meta_batch_size)
-                '''
 
                 """ ------------------- Logging Stuff --------------------------"""
                 logger.logkv('Itr', itr)
