@@ -42,7 +42,7 @@ class MetaSampler(Sampler):
         self.total_timesteps_sampled = 0
 
         self.env = env ########### add this for update_batch_size()
-
+        self.vec_envs = {}
         # setup vectorized environment
 
         if self.parallel:
@@ -58,10 +58,20 @@ class MetaSampler(Sampler):
         self.batch_size = batch_size
         self.envs_per_task = batch_size
         self.total_samples = self.meta_batch_size * batch_size * self.max_path_length
-        if self.parallel:
-            self.vec_env = MetaParallelEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
+
+        #Parallel = True
+        if str(self.envs_per_task) in self.vec_envs:
+            self.vec_env = self.vec_envs[str(self.envs_per_task)]
+            self.vec_env.reset()
         else:
-            self.vec_env = MetaIterativeEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
+            self.vec_envs[str(self.envs_per_task)] = MetaParallelEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
+            self.vec_env = self.vec_envs[str(self.envs_per_task)]
+
+        # if self.parallel:
+        #     self.vec_env = MetaParallelEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
+        # else:
+        #     self.vec_env = MetaIterativeEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
+
 
 
     def update_tasks(self, test=False, start_from=0):
