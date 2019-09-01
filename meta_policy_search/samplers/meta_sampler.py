@@ -35,11 +35,14 @@ class MetaSampler(Sampler):
         super(MetaSampler, self).__init__(env, policy, rollouts_per_meta_task, max_path_length)
         assert hasattr(env, 'set_task')
 
-        self.envs_per_task = rollouts_per_meta_task if envs_per_task is None else envs_per_task
+        self.envs_per_task = rollouts_per_meta_task if envs_per_task is None else envs_per_task  #########
         self.meta_batch_size = meta_batch_size
         self.total_samples = meta_batch_size * rollouts_per_meta_task * max_path_length
         self.parallel = parallel
         self.total_timesteps_sampled = 0
+
+
+        self.env = env ########### add this for update_batch_size()
 
         # setup vectorized environment
 
@@ -47,22 +50,35 @@ class MetaSampler(Sampler):
             self.vec_env = MetaParallelEnvExecutor(env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
         else:
             self.vec_env = MetaIterativeEnvExecutor(env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
-
-    def update_batch_size(self, batch_size):
+    '''
+    def update_meta_batch_size(self, meta_batch_size): # num of tasks
+        self.meta_batch_size = meta_batch_size
+        self.total_samples = self.meta_batch_size * self.batch_size * self.max_path_length
+    '''
+    def update_batch_size(self, batch_size): # num of rollouts per task
         self.batch_size = batch_size
+        self.envs_per_task = batch_size
         self.total_samples = self.meta_batch_size * batch_size * self.max_path_length
+        if self.parallel:
+            self.vec_env = MetaParallelEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
+        else:
+            self.vec_env = MetaIterativeEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
 
-    def update_tasks(self):
+
+    def update_tasks(self, test=False, start_from=0):
         """
         Samples a new goal for each meta task
         """
-        tasks = self.env.sample_tasks(self.meta_batch_size)
-        assert len(tasks) == self.meta_batch_size
+        if not test:
+            tasks = self.env.sample_tasks(self.meta_batch_size)
+            assert len(tasks) == self.meta_batch_size
+        else:
+            tasks = self.env.sample_tasks(self.meta_batch_size, is_eval=True, start_from=start_from)
         self.vec_env.set_tasks(tasks)
 
-    def obtain_samples(self, log=False, log_prefix='', test=0):
+    def obtain_samples(self, log=False, log_prefix='', test=False):
 
-        print("--------------obtaining samples--------------")
+        print("--------------obtaining", self.total_samples//self.meta_batch_size//self.max_path_length, "rollouts_per_task, for", self.meta_batch_size, "tasks..--------------")
 
         """
         Collect batch_size trajectories from each task
@@ -75,14 +91,15 @@ class MetaSampler(Sampler):
             (dict) : A dict of paths of size [meta_batch_size] x (batch_size) x [5] x (max_path_length)
         """
 
-
         # initial setup / preparation
         paths = OrderedDict()
         for i in range(self.meta_batch_size):
             paths[i] = []
 
         n_samples = 0
+
         running_paths = [_get_empty_running_paths_dict() for _ in range(self.vec_env.num_envs)]
+        print("runnng_paths length: ", len(running_paths), "=========")
 
         pbar = ProgBar(self.total_samples)
         policy_time, env_time = 0, 0
@@ -93,7 +110,6 @@ class MetaSampler(Sampler):
         obses = self.vec_env.reset()
         
         while n_samples < self.total_samples:
-            
             # execute policy
             t = time.time()
             obs_per_task = np.split(np.asarray(obses), self.meta_batch_size)
@@ -135,6 +151,7 @@ class MetaSampler(Sampler):
             pbar.update(new_samples)
             n_samples += new_samples
             obses = next_obses
+
         pbar.stop()
 
         if not test:

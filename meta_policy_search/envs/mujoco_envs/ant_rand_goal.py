@@ -20,9 +20,10 @@ class AntRandGoalEnv(MetaEnv, gym.utils.EzPickle, MujocoEnv):
         MujocoEnv.__init__(self, 'ant.xml', 5)
         gym.utils.EzPickle.__init__(self)
 
-    def sample_tasks(self, n_tasks, is_eval = False):
+    def sample_tasks(self, n_tasks, is_eval=False, start_from=0):
         if is_eval:
-            return [self._tasks[-idx] for idx in np.random.choice(range(self.NUM_EVAL) + 1, size=n_tasks)]
+            # return [self._tasks[-idx] for idx in np.random.choice(range(1, self.NUM_EVAL+1), size=n_tasks)]
+            return [self._tasks[idx + self.NUM_TRAIN + start_from] for idx in range(n_tasks)]
         else:
             return [self._tasks[idx] for idx in np.random.choice(range(self.NUM_TRAIN), size=n_tasks)]
 

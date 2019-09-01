@@ -145,12 +145,10 @@ class SampleProcessor(object):
             logger.logkv(log_prefix + 'AverageReturn', np.mean(undiscounted_returns))
 
             #logger.log("----------len(undiscounted_returns):    ", len(undiscounted_returns))
-
             ###wrong: arrangement: [task1~5, task1~5, ...] logger.logkv(log_prefix + 'AverageReturn-2', np.mean(undiscounted_returns[-2:]))
-
-            logger.logkv(log_prefix + 'AverageReturn-2', np.mean(undiscounted_returns[-2*meta_batch_size:]))
+            #logger.logkv(log_prefix + 'AverageReturn-2', np.mean(undiscounted_returns[-2*meta_batch_size:]))
             # will take undiscounted[-meta_batch_size:] when rollouts_per_meta_task < 2
-            logger.log("AverageReturn-2 is estimated by the last 2 trajectories...")
+            #logger.log("AverageReturn-2 is estimated by the last 2 trajectories...")
 
             logger.logkv(log_prefix + 'NumTrajs', len(paths))
             logger.logkv(log_prefix + 'StdReturn', np.std(undiscounted_returns))

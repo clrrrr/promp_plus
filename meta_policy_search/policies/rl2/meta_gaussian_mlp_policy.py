@@ -1,8 +1,8 @@
-from meta_policy_search.policies.base import MetaPolicy
-from meta_policy_search.policies.gaussian_mlp_policy import GaussianMLPPolicy
+from meta_policy_search.policies.rl2.base import MetaPolicy
+from meta_policy_search.policies.rl2.gaussian_mlp_policy import GaussianMLPPolicy
 import numpy as np
 import tensorflow as tf
-from meta_policy_search.policies.networks.mlp import forward_mlp
+from meta_policy_search.policies.rl2.networks.mlp import forward_mlp
 
 
 class MetaGaussianMLPPolicy(GaussianMLPPolicy, MetaPolicy):
@@ -19,9 +19,6 @@ class MetaGaussianMLPPolicy(GaussianMLPPolicy, MetaPolicy):
         self.post_update_log_std_var = None
 
         super(MetaGaussianMLPPolicy, self).__init__(*args, **kwargs)
-
-    def update_meta_batch_size(self, meta_batch_size): #####
-        self.meta_batch_size = meta_batch_size
 
     def build_graph(self):
         """

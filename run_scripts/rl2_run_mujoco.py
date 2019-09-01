@@ -14,11 +14,11 @@ from meta_policy_search.algos.ppo import PPO
 from meta_policy_search.trainer import Trainer
 from meta_policy_search.samplers.rl2.maml_sampler import MAMLSampler
 from meta_policy_search.samplers.rl2.rl2_sample_processor import RL2SampleProcessor
-from meta_policy_search.policies.meta_gaussian_mlp_policy import MetaGaussianMLPPolicy
+from meta_policy_search.policies.rl2.meta_gaussian_mlp_policy import MetaGaussianMLPPolicy
 from meta_policy_search.policies.gaussian_rnn_policy import GaussianRNNPolicy
 import os
 from meta_policy_search.utils import logger
-from meta_policy_search.utils.utils import set_seed, ClassEncoder
+from meta_policy_search.utils.rl2.utils import set_seed, ClassEncoder
 import json
 import numpy as np
 
@@ -52,7 +52,7 @@ def main(config):
             meta_batch_size=config['meta_batch_size'],
             hidden_sizes=config['hidden_sizes'],
             cell_type=config['cell_type']
-        )
+    )
 
     sampler = MAMLSampler(
         env=env,

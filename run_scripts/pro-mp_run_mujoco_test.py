@@ -51,6 +51,9 @@ def main(config):
         env = data['env']
         baseline = data['baseline']
 
+        # config['meta_batch_size'] = env.NUM_EVAL
+        # policy.meta_batch_size = env.NUM_EVAL
+
         sampler = MetaSampler(
             env=env,
             policy=policy,
@@ -99,13 +102,13 @@ if __name__=="__main__":
     parser = argparse.ArgumentParser(description='ProMP: Proximal Meta-Policy Search')
     parser.add_argument('--config_file', type=str, default='', help='json file with run specifications')
     # parser.add_argument('--dump_path', type=str, default=meta_policy_search_path + '/data/pro-mp/run_%d' % idx)
-
+    parser.add_argument('--exp', type=str)
     parser.add_argument('--eff', type=int, default=20)
     parser.add_argument('--dir', type=str)
 
     args = parser.parse_args()
 
-    load_path = meta_policy_search_path + "/data/pro-mp/" + args.dir
+    load_path = meta_policy_search_path + "/data/pro-mp/" + args.exp + "/" + args.dir
     dump_path = load_path.replace("run", "test")
 
     if args.config_file: # load configuration from json file

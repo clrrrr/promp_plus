@@ -32,12 +32,10 @@ class WalkerRandParamsWrappedEnv(Walker2DRandParamsEnv): ##### MetaEnv, gym.util
         self._tasks = super(WalkerRandParamsWrappedEnv, self).sample_tasks(self.NUM_TASKS) # self.sample_tasks(self.NUM_TASKS)
         self.set_task(self._tasks[0])
 
-
-
-
-    def sample_tasks(self, n_tasks, is_eval = False):
+    def sample_tasks(self, n_tasks, is_eval=False, start_from=0):
         if is_eval:
-            return [self._tasks[-idx] for idx in np.random.choice(range(self.NUM_EVAL) + 1, size=n_tasks)]
+            # return [self._tasks[-idx] for idx in np.random.choice(range(1, self.NUM_EVAL+1), size=n_tasks)]
+            return [self._tasks[idx + self.NUM_TRAIN + start_from] for idx in range(n_tasks)]
         else:
             return [self._tasks[idx] for idx in np.random.choice(range(self.NUM_TRAIN), size=n_tasks)]
 

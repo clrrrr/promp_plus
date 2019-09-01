@@ -1,0 +1,4 @@
+from meta_policy_search.policies.rl2.base import MetaPolicy
+from meta_policy_search.policies.rl2.base import Policy
+from meta_policy_search.policies.rl2.gaussian_mlp_policy import GaussianMLPPolicy
+from meta_policy_search.policies.rl2.meta_gaussian_mlp_policy import MetaGaussianMLPPolicy

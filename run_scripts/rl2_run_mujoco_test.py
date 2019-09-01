@@ -14,11 +14,11 @@ from meta_policy_search.algos.ppo import PPO
 from meta_policy_search.tester import Tester
 from meta_policy_search.samplers.rl2.maml_sampler import MAMLSampler
 from meta_policy_search.samplers.rl2.rl2_sample_processor import RL2SampleProcessor
-from meta_policy_search.policies.meta_gaussian_mlp_policy import MetaGaussianMLPPolicy
-from meta_policy_search.policies.gaussian_rnn_policy import GaussianRNNPolicy
+from meta_policy_search.policies.rl2.meta_gaussian_mlp_policy import MetaGaussianMLPPolicy
+from meta_policy_search.policies.rl2.gaussian_rnn_policy import GaussianRNNPolicy
 import os
 from meta_policy_search.utils import logger
-from meta_policy_search.utils.utils import set_seed, ClassEncoder
+from meta_policy_search.utils.rl2.utils import set_seed, ClassEncoder
 import json
 import numpy as np
 
@@ -34,12 +34,13 @@ import numpy as np
 import tensorflow as tf
 import json
 import argparse
+import joblib
 import time
 
 meta_policy_search_path = '/'.join(os.path.realpath(os.path.dirname(__file__)).split('/')[:-1])
 
 def main(config):
-    set_seed(config['seed'])
+
     sess = tf.Session()
 
     with sess.as_default() as sess:
@@ -49,7 +50,7 @@ def main(config):
         env = data['env']
         baseline = data['baseline']
 
-        obs_dim = np.prod(env.observation_space.shape) + np.prod(env.action_space.shape) + 1 + 1
+        config['meta_batch_size'] = env.NUM_EVAL
 
         sampler = MAMLSampler(
             env=env,
@@ -89,16 +90,16 @@ def main(config):
 
 if __name__=="__main__":
     # idx = int(time.time())
-    parser = argparse.ArgumentParser(description='ProMP: Proximal Meta-Policy Search')
+    parser = argparse.ArgumentParser(description='RL2')
     parser.add_argument('--config_file', type=str, default='', help='json file with run specifications')
     # parser.add_argument('--dump_path', type=str, default=meta_policy_search_path + '/data/pro-mp/run_%d' % idx)
-
+    parser.add_argument('--exp', type=str)
     parser.add_argument('--eff', type=int, default=20)
     parser.add_argument('--dir', type=str)
 
     args = parser.parse_args()
 
-    load_path = meta_policy_search_path + "/data/rl2/" + args.dir
+    load_path = meta_policy_search_path + "/data/rl2/" + args.exp + "/" + args.dir
     dump_path = load_path.replace("run", "test")
 
     if args.config_file: # load configuration from json file

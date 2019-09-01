@@ -1,6 +1,6 @@
-from meta_policy_search.policies.networks.mlp import create_rnn
-from meta_policy_search.policies.distributions.diagonal_gaussian import DiagonalGaussian
-from meta_policy_search.policies.base import Policy
+from meta_policy_search.policies.rl2.networks.mlp import create_rnn
+from meta_policy_search.policies.rl2.distributions.diagonal_gaussian import DiagonalGaussian
+from meta_policy_search.policies.rl2.base import Policy
 from meta_policy_search.utils.rl2 import Serializable
 from meta_policy_search.utils.rl2.utils import remove_scope_from_name
 from meta_policy_search.utils import logger
@@ -29,7 +29,7 @@ class GaussianRNNPolicy(Policy):
 
     """
 
-    def __init__(self, *args, init_std=1., min_std=1e-6, cell_type='lstm', **kwargs):
+    def __init__(self, *args, init_std=1., min_std=1e-6, cell_type='gru', **kwargs):
         # store the init args for serialization and call the super constructors
         Serializable.quick_init(self, locals())
         Policy.__init__(self, *args, **kwargs)

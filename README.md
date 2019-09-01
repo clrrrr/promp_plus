@@ -1,7 +1,7 @@
 # Usage:
 
 ## Train:
-
+e.g.
 python run_scripts/pro-mp_run_mujoco.py —exp AntRandGoal --rollouts_per_meta_task 5
 
 Envs:
@@ -15,7 +15,5 @@ HumanoidRandDirec2D
 WalkerRandParams
 
 ## Test:
-python run_scripts/pro-mp_run_mujoco_test.py --dir xxx --eff(default=20) 10 
-
-e.g. "AntRandGoal/run_1566926648"
-
+e.g.
+python run_scripts/pro-mp_run_mujoco_test.py --dir run_1566926648 --eff 10  --exp AntRandGoal

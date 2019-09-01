@@ -1,5 +1,5 @@
-from meta_policy_search.utils.utils import remove_scope_from_name
-from meta_policy_search.utils import Serializable
+from meta_policy_search.utils.rl2.utils import remove_scope_from_name
+from meta_policy_search.utils.rl2 import Serializable
 import tensorflow as tf
 from collections import OrderedDict
 
@@ -187,13 +187,6 @@ class Policy(Serializable):
         Args:
             policy_params (dict): of variable names and corresponding parameter values
         """
-
-        '''
-        print("================================")
-        for k1, k2 in zip(self.get_params().keys(), policy_params.keys()):
-            print(k1, k2)
-        '''
-
         assert all([k1 == k2 for k1, k2 in zip(self.get_params().keys(), policy_params.keys())]), \
             "parameter keys must match with variable"
 

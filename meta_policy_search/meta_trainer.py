@@ -107,7 +107,6 @@ class Trainer(object):
                     '''
                     paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step)
 
-
                     list_sampling_time.append(time.time() - time_env_sampling_start)
                     all_paths.append(paths)
 
@@ -140,9 +139,53 @@ class Trainer(object):
                 time_outer_step_start = time.time()
                 self.algo.optimize_policy(all_samples_data)
 
+                """ ------------------ Test-split Performance for logging ---------------------"""
+
+                logger.log("Testing on test-tasks split for logging...")
+
+                sampler_batch_size = self.sampler.batch_size
+                self.sampler.update_batch_size(2) ####################
+
+                undiscounted_returns = []
+
+                for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
+
+                    self.sampler.update_tasks(test=True, start_from=i)  # sample from test split!
+                    self.policy.switch_to_pre_update()  # Switch to pre-update policy
+
+                    for step in range(self.num_inner_grad_steps + 1):
+                        logger.log("On Test: Obtaining samples...")
+                        paths = self.sampler.obtain_samples(log=False, test=True) # log_prefix='test-Step_%d-' % step
+
+                        #print(len(paths),"----=====-------======-----")
+                        #print(len(paths[0]))
+
+                        logger.log("On Test: Processing Samples...")
+
+                        samples_data = self.sample_processor.process_samples(paths, log=False) # log='all', log_prefix='test-Step_%d-' % step
+                        self.log_diagnostics(sum(list(paths.values()), []), prefix='test-Step_%d-' % step)
+
+                        """ ------------------- Inner Policy Update / logging returns --------------------"""
+                        if step < self.num_inner_grad_steps:
+                            logger.log("On Test: Computing inner policy updates...")
+                            self.algo._adapt(samples_data)
+                        else:
+                            paths = self.sample_processor.gao_paths(paths)
+                            undiscounted_returns.extend([sum(path["rewards"]) for path in paths])
+
+                test_average_return = np.mean(undiscounted_returns)
+                self.sampler.update_batch_size(sampler_batch_size)
+
+                '''
+                self.sampler.update_meta_batch_size(sampler_meta_batch_size)
+                self.policy.update_meta_batch_size(policy_meta_batch_size)
+                '''
+
                 """ ------------------- Logging Stuff --------------------------"""
                 logger.logkv('Itr', itr)
                 logger.logkv('n_timesteps', self.sampler.total_timesteps_sampled)
+
+                logger.logkv('test-AverageReturn', test_average_return)
 
                 logger.logkv('Time-OuterStep', time.time() - time_outer_step_start)
                 logger.logkv('Time-TotalInner', total_inner_time)
