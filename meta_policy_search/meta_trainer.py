@@ -139,18 +139,15 @@ class Trainer(object):
                 time_outer_step_start = time.time()
                 self.algo.optimize_policy(all_samples_data)
 
-
-                '''
                 """ ------------------ Test-split Performance for logging ---------------------"""
 
                 logger.log("Testing on test-tasks split for logging...")
 
                 sampler_batch_size = self.sampler.batch_size
-                #####self.sampler.update_batch_size(2) ####################
+                self.sampler.update_batch_size(2) ##############
 
                 undiscounted_returns = []
-                #for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
-                for i in range(1):
+                for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
                     self.sampler.update_tasks(test=True, start_from=i)  # sample from test split!
                     self.policy.switch_to_pre_update()  # Switch to pre-update policy
 
@@ -171,15 +168,13 @@ class Trainer(object):
                             undiscounted_returns.extend([sum(path["rewards"]) for path in paths])
 
                 test_average_return = np.mean(undiscounted_returns)
-                #####self.sampler.update_batch_size(sampler_batch_size)
-                
-                '''
+                self.sampler.update_batch_size(sampler_batch_size)
 
                 """ ------------------- Logging Stuff --------------------------"""
                 logger.logkv('Itr', itr)
                 logger.logkv('n_timesteps', self.sampler.total_timesteps_sampled)
 
-                #####logger.logkv('test-AverageReturn', test_average_return)
+                logger.logkv('test-AverageReturn', test_average_return)
 
                 logger.logkv('Time-OuterStep', time.time() - time_outer_step_start)
                 logger.logkv('Time-TotalInner', total_inner_time)
