@@ -3,12 +3,6 @@
   <component name="ChangeListManager">
     <list default="true" id="1da1dbff-9f90-4cb6-a78d-8c0c9055443b" name="Default" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/maml_sampler.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/maml_sampler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/trainer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -58,8 +52,8 @@
       <file leaf-file-name="gaussian_rnn_policy.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/policies/gaussian_rnn_policy.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="116">
-              <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+            <state relative-caret-position="575">
+              <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
               <folding>
                 <element signature="e#0#63#0" expanded="true" />
               </folding>
@@ -754,8 +748,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/policies/gaussian_rnn_policy.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="116">
-          <caret line="14" column="68" selection-start-line="14" selection-start-column="68" selection-end-line="14" selection-end-column="68" />
+        <state relative-caret-position="575">
+          <caret line="41" column="27" selection-start-line="41" selection-start-column="27" selection-end-line="41" selection-end-column="27" />
           <folding>
             <element signature="e#0#63#0" expanded="true" />
           </folding>
