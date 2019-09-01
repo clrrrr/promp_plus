@@ -139,6 +139,8 @@ class Trainer(object):
                 time_outer_step_start = time.time()
                 self.algo.optimize_policy(all_samples_data)
 
+
+                '''
                 """ ------------------ Test-split Performance for logging ---------------------"""
 
                 logger.log("Testing on test-tasks split for logging...")
@@ -170,12 +172,14 @@ class Trainer(object):
 
                 test_average_return = np.mean(undiscounted_returns)
                 #####self.sampler.update_batch_size(sampler_batch_size)
+                
+                '''
 
                 """ ------------------- Logging Stuff --------------------------"""
                 logger.logkv('Itr', itr)
                 logger.logkv('n_timesteps', self.sampler.total_timesteps_sampled)
 
-                logger.logkv('test-AverageReturn', test_average_return)
+                #####logger.logkv('test-AverageReturn', test_average_return)
 
                 logger.logkv('Time-OuterStep', time.time() - time_outer_step_start)
                 logger.logkv('Time-TotalInner', total_inner_time)
