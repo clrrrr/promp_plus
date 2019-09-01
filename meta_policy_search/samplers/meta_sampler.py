@@ -66,6 +66,7 @@ class MetaSampler(Sampler):
         else:
             self.vec_envs[str(self.envs_per_task)] = MetaParallelEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
             self.vec_env = self.vec_envs[str(self.envs_per_task)]
+            self.vec_env.reset()
 
         # if self.parallel:
         #     self.vec_env = MetaParallelEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
