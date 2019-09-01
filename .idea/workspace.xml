@@ -2,7 +2,7 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da1dbff-9f90-4cb6-a78d-8c0c9055443b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -13,11 +13,11 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="meta_sampler.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="meta_sampler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-279">
-              <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+            <state relative-caret-position="694">
+              <caret line="59" column="85" selection-start-line="59" selection-start-column="85" selection-end-line="59" selection-end-column="85" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
               </folding>
@@ -28,10 +28,22 @@
       <file leaf-file-name="pro-mp_run_mujoco.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="210">
-              <caret line="61" column="19" lean-forward="true" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+            <state relative-caret-position="439">
+              <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
+              </folding>
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="meta_trainer.py" pinned="false" current-in-tab="true">
+        <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_trainer.py">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="479">
+              <caret line="171" column="21" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
+              <folding>
+                <element signature="e#0#23#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -40,46 +52,10 @@
       <file leaf-file-name="vectorized_env_executor.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/vectorized_env_executor.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-2436">
+            <state relative-caret-position="-805">
               <caret line="101" column="8" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="maml_sampler.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/maml_sampler.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-387">
-              <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#56#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gaussian_rnn_policy.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/meta_policy_search/policies/gaussian_rnn_policy.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="609">
-              <caret line="43" column="31" selection-start-line="43" selection-start-column="31" selection-end-line="43" selection-end-column="31" />
-              <folding>
-                <element signature="e#0#63#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="gaussian_mlp_policy.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/meta_policy_search/policies/gaussian_mlp_policy.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="571">
-              <caret line="117" column="8" selection-start-line="117" selection-start-column="8" selection-end-line="117" selection-end-column="8" />
-              <folding>
-                <element signature="e#0#76#0" expanded="true" />
               </folding>
             </state>
           </provider>
@@ -89,7 +65,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>.create_mlp</find>
       <find>'output'</find>
       <find>utils.utils import</find>
       <find>networks.mlp</find>
@@ -119,6 +94,7 @@
       <find>averageReturn-</find>
       <find>metapa</find>
       <find>agent_infos</find>
+      <find>update</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -171,10 +147,10 @@
         <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/maml_sampler.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py" />
-        <option value="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/trainer.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" />
+        <option value="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" />
       </list>
     </option>
   </component>
@@ -660,16 +636,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_trainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="483">
-          <caret line="181" column="76" selection-start-line="181" selection-start-column="76" selection-end-line="181" selection-end-column="76" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="446">
@@ -708,32 +674,12 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/vectorized_env_executor.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-2436">
-          <caret line="101" column="8" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#18#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/trainer.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="593">
           <caret line="110" column="48" selection-start-line="110" selection-start-column="48" selection-end-line="110" selection-end-column="48" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/maml_sampler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-387">
-          <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
-          <folding>
-            <element signature="e#0#56#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -748,22 +694,52 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/rl2/maml_sampler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="210">
-          <caret line="61" column="19" lean-forward="true" selection-start-line="61" selection-start-column="19" selection-end-line="61" selection-end-column="19" />
+        <state relative-caret-position="-387">
+          <caret line="79" column="8" selection-start-line="79" selection-start-column="8" selection-end-line="79" selection-end-column="8" />
           <folding>
-            <element signature="e#0#9#0" expanded="true" />
+            <element signature="e#0#56#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/vectorized_env_executor.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-805">
+          <caret line="101" column="8" selection-start-line="101" selection-start-column="8" selection-end-line="101" selection-end-column="8" />
+          <folding>
+            <element signature="e#0#18#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-279">
-          <caret line="24" column="8" selection-start-line="24" selection-start-column="8" selection-end-line="24" selection-end-column="8" />
+        <state relative-caret-position="694">
+          <caret line="59" column="85" selection-start-line="59" selection-start-column="85" selection-end-line="59" selection-end-column="85" />
           <folding>
             <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="439">
+          <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="479">
+          <caret line="171" column="21" selection-start-line="171" selection-start-column="21" selection-end-line="171" selection-end-column="21" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>

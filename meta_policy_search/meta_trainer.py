@@ -144,7 +144,7 @@ class Trainer(object):
                 logger.log("Testing on test-tasks split for logging...")
 
                 sampler_batch_size = self.sampler.batch_size
-                self.sampler.update_batch_size(2) ####################
+                #####self.sampler.update_batch_size(2) ####################
 
                 undiscounted_returns = []
                 for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
@@ -169,7 +169,7 @@ class Trainer(object):
                             undiscounted_returns.extend([sum(path["rewards"]) for path in paths])
 
                 test_average_return = np.mean(undiscounted_returns)
-                self.sampler.update_batch_size(sampler_batch_size)
+                #####self.sampler.update_batch_size(sampler_batch_size)
 
                 """ ------------------- Logging Stuff --------------------------"""
                 logger.logkv('Itr', itr)
