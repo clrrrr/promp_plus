@@ -25,7 +25,7 @@ class HumanoidRandDirec2DEnv(MetaEnv, gym.utils.EzPickle, MujocoEnv):
     def sample_tasks(self, n_tasks, is_eval=False, start_from=0):
         if is_eval:
             # return [self._tasks[-idx] for idx in np.random.choice(range(1, self.NUM_EVAL+1), size=n_tasks)]
-            ret = [self._tasks[idx + self.NUM_TRAIN + start_from] for idx in range(min(n_tasks, NUM_EVAL))]
+            ret = [self._tasks[idx + self.NUM_TRAIN + start_from] for idx in range(min(n_tasks, self.NUM_EVAL))]
             ret.extend([self._tasks[-idx] for idx in np.random.choice(range(1, self.NUM_EVAL+1), size=n_tasks-len(ret))])
             return ret
         else:
