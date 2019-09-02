@@ -103,6 +103,7 @@ class Trainer(object):
 
                 undiscounted_returns = []
                 for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
+                    # Caution: Here actually i in [0] since self.meta_batch_size=100(when running on linux)
 
                     self.sampler.update_tasks(test=True, start_from=i)  # sample from test split!
                     #self.policy.switch_to_pre_update()  # Switch to pre-update policy
