@@ -127,7 +127,7 @@ if __name__=="__main__":
             "meta_batch_size": meta_batch_size, #200！
             "hidden_sizes": [64],
 
-            "rollouts_per_meta_task": 2,
+            "rollouts_per_meta_task": 3,
             "parallel": True,
             "max_path_length": 200, #100
             "n_itr": 10000, #1000

@@ -29,6 +29,13 @@ class Tester(object):
             sess = tf.Session()
         self.sess = sess
 
+    #############################
+    #  Tasks: whole test-split  #
+    #  Rollout_per_task:        #
+    #   adaptation: 1~20        #
+    #    logging: 2             #
+    #############################
+
     def train(self):
 
         for i in range(1, self.eff+1):
@@ -36,35 +43,53 @@ class Tester(object):
             with self.sess.as_default() as sess:
 
                 logger.log("----------- Adaptation rollouts per meta-task = ", i, " -----------")
-                #self.sampler.rollouts_per_meta_task = 10000
-                self.sampler.update_batch_size(i)
 
-                # initialize uninitialized vars  (only initialize vars that were not loaded)
-                uninit_vars = [var for var in tf.global_variables() if not sess.run(tf.is_variable_initialized(var))]
-                sess.run(tf.variables_initializer(uninit_vars))
+                undiscounted_returns = []
+                for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
 
-                # start_time = time.time()
+                    # initialize uninitialized vars  (only initialize vars that were not loaded)
+                    uninit_vars = [var for var in tf.global_variables() if
+                                   not sess.run(tf.is_variable_initialized(var))]
+                    sess.run(tf.variables_initializer(uninit_vars))
 
-                # deleted n_itr loop here
-                # itr_start_time = time.time()
-                # logger.log("\n ---------------- Iteration %d ----------------" % itr)
-                logger.log("Sampling set of tasks/goals for this meta-batch...")
+                    logger.log("Sampling set of tasks/goals for this meta-batch...")
+                    self.sampler.update_tasks(test=True, start_from=i)  # sample from test split!
+                    self.policy.switch_to_pre_update()  # Switch to pre-update policy
 
-                self.sampler.update_tasks()  # sample tasks!
-                self.policy.switch_to_pre_update()  # Switch to pre-update policy
+                    for step in range(self.num_inner_grad_steps + 1):
 
-                #all_samples_data, all_paths = [], []
-                # list_sampling_time, list_inner_step_time, list_outer_step_time, list_proc_samples_time = [], [], [], []
-                # start_total_inner_time = time.time()
+                        if step < self.num_inner_grad_steps:
+                            self.sampler.update_batch_size(i)
+                            logger.log("On step-0: Obtaining samples...")
+                        else:
+                            self.sampler.update_batch_size(2)
+                            logger.log("On step-1: Obtaining samples...")
+
+                        paths = self.sampler.obtain_samples(log=False, test=True) # log_prefix='test-Step_%d-' % step
+
+                        logger.log("On Test: Processing Samples...")
+                        samples_data = self.sample_processor.process_samples(paths, log=False) # log='all', log_prefix='test-Step_%d-' % step
+                        self.log_diagnostics(sum(list(paths.values()), []), prefix='test-Step_%d-' % step)
+
+                        """ ------------------- Inner Policy Update / logging returns --------------------"""
+                        if step < self.num_inner_grad_steps:
+                            logger.log("On Test: Computing inner policy updates...")
+                            self.algo._adapt(samples_data)
+                        else:
+                            paths = self.sample_processor.gao_paths(paths)
+                            undiscounted_returns.extend([sum(path["rewards"]) for path in paths])
+
+                test_average_return = np.mean(undiscounted_returns)
+
+
+
+
 
                 for step in range(self.num_inner_grad_steps + 1):
+
                     logger.log('** Step ' + str(step) + ' **')
-
                     """ -------------------- Sampling --------------------------"""
-
                     logger.log("Obtaining samples...")
-                    # time_env_sampling_start = time.time()
-
 
                     if step < self.num_inner_grad_steps:
                         paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step)
@@ -74,9 +99,6 @@ class Tester(object):
                         self.sampler.update_batch_size(2)
                         paths = self.sampler.obtain_samples(log=True, log_prefix='Step_%d-' % step, test=True)
                         print("step1-rollouts:", len(paths[0]))
-
-                        # list_sampling_time.append(time.time() - time_env_sampling_start)
-                    #all_paths.append(paths)
 
                     """ ----------------- Processing Samples ---------------------"""
 
@@ -94,12 +116,7 @@ class Tester(object):
                     if step < self.num_inner_grad_steps:
                         logger.log("Computing inner policy updates...")
                         self.algo._adapt(samples_data)
-                    # train_writer = tf.summary.FileWriter('/home/ignasi/Desktop/meta_policy_search_graph',
-                    #                                      sess.graph)
-                    # list_inner_step_time.append(time.time() - time_inner_step_start)
-                # total_inner_time = time.time() - start_total_inner_time
 
-                # time_maml_opt_start = time.time()
 
                 # """ ------------------ Outer Policy Update ---------------------"""
 
@@ -112,27 +129,16 @@ class Tester(object):
                 # logger.logkv('Itr', itr)
                 logger.logkv('n_timesteps', self.sampler.total_timesteps_sampled)
 
-                # logger.logkv('Time-OuterStep', time.time() - time_outer_step_start)
-                # logger.logkv('Time-TotalInner', total_inner_time)
-                # logger.logkv('Time-InnerStep', np.sum(list_inner_step_time))
-                # logger.logkv('Time-SampleProc', np.sum(list_proc_samples_time))
-                # logger.logkv('Time-Sampling', np.sum(list_sampling_time))
-
-                # logger.logkv('Time', time.time() - start_time)
-                # logger.logkv('ItrTime', time.time() - itr_start_time)
-                # logger.logkv('Time-MAMLSteps', time.time() - time_maml_opt_start)
-
                 # logger.log("Saving snapshot...")
                 # params = self.get_itr_snapshot(itr)
                 # logger.save_itr_params(itr, params)
                 # logger.log("Saved")
 
                 logger.logkv('rollouts_per_meta_task', i)
-
                 logger.dumpkvs()
 
             logger.log("Testing finished")
-            #self.sess.close()
+
 
     def get_itr_snapshot(self, itr):
         """

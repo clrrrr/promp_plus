@@ -110,7 +110,7 @@ class MetaSampler(Sampler):
         n_samples = 0
 
         running_paths = [_get_empty_running_paths_dict() for _ in range(self.vec_env.num_envs)]
-        print("=========runnng_paths length:", len(running_paths), "=========")
+        print("                runnng_paths length:", len(running_paths))
 
         pbar = ProgBar(self.total_samples)
         policy_time, env_time = 0, 0
@@ -168,7 +168,8 @@ class MetaSampler(Sampler):
         if not test:
             self.total_timesteps_sampled += self.total_samples
             print("------------self.total_timesteps_sampled:", self.total_timesteps_sampled, "-----------------")
-
+        else:
+            print("------------tested on:", self.total_samples // self.max_path_length, " rollouts-----------------")
 
         if log:
             logger.logkv(log_prefix + "PolicyExecTime", policy_time)
