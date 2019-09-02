@@ -2,10 +2,8 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="1da1dbff-9f90-4cb6-a78d-8c0c9055443b" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/meta_tester.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/meta_tester.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/meta_policy_search/trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/trainer.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" beforeDir="false" afterPath="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" afterDir="false" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -16,34 +14,10 @@
   </component>
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="rl2_run_mujoco.py" pinned="false" current-in-tab="false">
-        <entry file="file://$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="316">
-              <caret line="129" column="39" selection-start-line="129" selection-start-column="39" selection-end-line="129" selection-end-column="39" />
-              <folding>
-                <element signature="e#0#9#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
-      <file leaf-file-name="trainer.py" pinned="false" current-in-tab="true">
-        <entry file="file://$PROJECT_DIR$/meta_policy_search/trainer.py">
-          <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="880">
-              <caret line="101" column="48" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
-              <folding>
-                <element signature="e#0#23#0" expanded="true" />
-              </folding>
-            </state>
-          </provider>
-        </entry>
-      </file>
       <file leaf-file-name="meta_sampler.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-772">
+            <state relative-caret-position="-287">
               <caret line="112" column="73" selection-start-line="112" selection-start-column="73" selection-end-line="112" selection-end-column="73" />
               <folding>
                 <element signature="e#0#52#0" expanded="true" />
@@ -55,8 +29,8 @@
       <file leaf-file-name="pro-mp_run_mujoco.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-440">
-              <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
+            <state relative-caret-position="475">
+              <caret line="160" column="32" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -76,11 +50,11 @@
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="meta_trainer.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="meta_trainer.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_trainer.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="630">
-              <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
+            <state relative-caret-position="559">
+              <caret line="167" column="73" selection-start-line="167" selection-start-column="73" selection-end-line="167" selection-end-column="73" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -92,7 +66,7 @@
         <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="437">
-              <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+              <caret line="42" selection-start-line="42" selection-end-line="42" />
               <folding>
                 <element signature="e#0#18#0" expanded="true" />
               </folding>
@@ -104,7 +78,7 @@
         <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_tester.py">
           <provider selected="true" editor-type-id="text-editor">
             <state relative-caret-position="670">
-              <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
+              <caret line="88" selection-start-line="88" selection-end-line="88" />
               <folding>
                 <element signature="e#0#23#0" expanded="true" />
               </folding>
@@ -117,15 +91,15 @@
   <component name="FindInProjectRecents">
     <findStrings>
       <find>'output'</find>
-      <find>utils.utils import</find>
+      <find />
       <find>networks.mlp</find>
       <find>'outpu</find>
       <find>process</find>
       <find>'lstm'</find>
       <find>meta_batch_size</find>
       <find>policies_params_phs</find>
-      <find>assert len(tasks)</find>
-      <find>assert len</find>
+      <find />
+      <find />
       <find>._log_</find>
       <find>_get_pre_</find>
       <find>log_stds</find>
@@ -184,7 +158,6 @@
         <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco_test.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/policies/base.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/tester.py" />
-        <option value="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" />
         <option value="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco_test.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/policies/meta_gaussian_mlp_policy.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/meta_sample_processor.py" />
@@ -192,7 +165,6 @@
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/vectorized_env_executor.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/rl2_sample_processor.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/base.py" />
-        <option value="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/rl2/maml_sampler.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/humanoid_rand_direc_2d.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/ant_rand_goal.py" />
@@ -202,6 +174,8 @@
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/trainer.py" />
         <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" />
+        <option value="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" />
+        <option value="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" />
       </list>
     </option>
   </component>
@@ -215,8 +189,8 @@
     <packageJsonPaths />
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="128" />
-    <option name="y" value="38" />
+    <option name="x" value="14" />
+    <option name="y" value="62" />
     <option name="width" value="1882" />
     <option name="height" value="942" />
   </component>
@@ -722,50 +696,10 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-772">
-          <caret line="112" column="73" selection-start-line="112" selection-start-column="73" selection-end-line="112" selection-end-column="73" />
-          <folding>
-            <element signature="e#0#52#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco_test.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="394">
-          <caret line="96" column="18" selection-start-line="96" selection-start-column="18" selection-end-line="96" selection-end-column="18" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_tester.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="670">
-          <caret line="88" lean-forward="true" selection-start-line="88" selection-end-line="88" />
-          <folding>
-            <element signature="e#0#23#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-440">
-          <caret line="100" column="14" selection-start-line="100" selection-start-column="14" selection-end-line="100" selection-end-column="14" />
-          <folding>
-            <element signature="e#0#9#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_trainer.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="630">
-          <caret line="171" lean-forward="true" selection-start-line="171" selection-end-line="171" />
+          <caret line="88" selection-start-line="88" selection-end-line="88" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>
@@ -775,9 +709,19 @@
     <entry file="file://$PROJECT_DIR$/meta_policy_search/envs/mujoco_envs/walker2d_rand_params.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="437">
-          <caret line="42" lean-forward="true" selection-start-line="42" selection-end-line="42" />
+          <caret line="42" selection-start-line="42" selection-end-line="42" />
           <folding>
             <element signature="e#0#18#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-546">
+          <caret line="62" column="99" lean-forward="true" selection-start-line="62" selection-start-column="99" selection-end-line="62" selection-end-column="99" />
+          <folding>
+            <element signature="e#0#23#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -792,10 +736,40 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/meta_policy_search/trainer.py">
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="880">
-          <caret line="101" column="48" selection-start-line="101" selection-start-column="48" selection-end-line="101" selection-end-column="48" />
+        <state relative-caret-position="-287">
+          <caret line="112" column="73" selection-start-line="112" selection-start-column="73" selection-end-line="112" selection-end-column="73" />
+          <folding>
+            <element signature="e#0#52#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="475">
+          <caret line="160" column="32" selection-start-line="160" selection-start-column="32" selection-end-line="160" selection-end-column="32" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco_test.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="394">
+          <caret line="96" column="18" selection-start-line="96" selection-start-column="18" selection-end-line="96" selection-end-column="18" />
+          <folding>
+            <element signature="e#0#9#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/meta_policy_search/meta_trainer.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="559">
+          <caret line="167" column="73" selection-start-line="167" selection-start-column="73" selection-end-line="167" selection-end-column="73" />
           <folding>
             <element signature="e#0#23#0" expanded="true" />
           </folding>

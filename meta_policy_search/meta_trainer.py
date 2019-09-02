@@ -141,12 +141,39 @@ class Trainer(object):
 
                 """ ------------------ Test-split Performance for logging ---------------------"""
 
-                logger.log("Testing on test-tasks split for logging...")
+                logger.log("Testing on test-tasks split for logging, rollout_per_task = 20...")
+                undiscounted_returns = []
 
+                for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
+                    self.sampler.update_tasks(test=True, start_from=i)  # sample from test split!
+                    self.policy.switch_to_pre_update()  # Switch to pre-update policy
+
+                    for step in range(self.num_inner_grad_steps + 1):
+                        logger.log("On Test: Obtaining samples...")
+                        paths = self.sampler.obtain_samples(log=False, test=True) # log_prefix='test-Step_%d-' % step
+
+                        logger.log("On Test: Processing Samples...")
+                        samples_data = self.sample_processor.process_samples(paths, log=False) # log='all', log_prefix='test-Step_%d-' % step
+                        self.log_diagnostics(sum(list(paths.values()), []), prefix='test20-Step_%d-' % step)
+
+                        """ ------------------- Inner Policy Update / logging returns --------------------"""
+                        if step < self.num_inner_grad_steps:
+                            logger.log("On Test: Computing inner policy updates...")
+                            self.algo._adapt(samples_data)
+                        else:
+                            paths = self.sample_processor.gao_paths(paths)
+                            undiscounted_returns.extend([sum(path["rewards"]) for path in paths])
+
+                test_average_return = np.mean(undiscounted_returns)
+                logger.logkv('test20-AverageReturn', test_average_return)
+
+
+
+                logger.log("Testing on test-tasks split for logging, rollout_per_task = 2...")
                 sampler_batch_size = self.sampler.batch_size
                 self.sampler.update_batch_size(2) ##############
-
                 undiscounted_returns = []
+
                 for i in range(0, self.env.NUM_EVAL, self.sampler.meta_batch_size):
                     self.sampler.update_tasks(test=True, start_from=i)  # sample from test split!
                     self.policy.switch_to_pre_update()  # Switch to pre-update policy
