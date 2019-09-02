@@ -21,7 +21,9 @@ class HalfCheetahRandVelEnv(MetaEnv, MujocoEnv, gym.utils.EzPickle):
     def sample_tasks(self, n_tasks, is_eval=False, start_from=0):
         if is_eval:
             # return [self._tasks[-idx] for idx in np.random.choice(range(1, self.NUM_EVAL+1), size=n_tasks)]
-            return [self._tasks[idx + self.NUM_TRAIN + start_from] for idx in range(n_tasks)]
+            ret = [self._tasks[idx + self.NUM_TRAIN + start_from] for idx in range(min(n_tasks, self.NUM_EVAL))]
+            ret.extend([self._tasks[-idx] for idx in np.random.choice(range(1, self.NUM_EVAL+1), size=n_tasks-len(ret))])
+            return ret
         else:
             return [self._tasks[idx] for idx in np.random.choice(range(self.NUM_TRAIN), size=n_tasks)]
 
