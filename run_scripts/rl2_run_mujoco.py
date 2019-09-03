@@ -103,7 +103,7 @@ if __name__=="__main__":
             config = json.load(f)
     else: # use default config
 
-        meta_batch_size = 100
+        meta_batch_size = 50
         if args.exp.startswith("W"):
             if platform == 'linux':
                 os.environ['MUJOCO_PY_MJPRO_PATH'] = "/home/zhjl/.mujoco/mjpro131"
