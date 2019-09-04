@@ -137,7 +137,7 @@ if __name__=="__main__":
 
             # sampler config
             'rollouts_per_meta_task': args.rollouts_per_meta_task,
-            'max_path_length': 100,#200,
+            'max_path_length': 200,
             'parallel': True,
 
             # sample processor config
