@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="1da1dbff-9f90-4cb6-a78d-8c0c9055443b" name="Default" comment="" />
+    <list default="true" id="1da1dbff-9f90-4cb6-a78d-8c0c9055443b" name="Default" comment="">
+      <change beforePath="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" beforeDir="false" afterPath="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" afterDir="false" />
+    </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
     <option name="SHOW_DIALOG" value="false" />
@@ -26,8 +28,8 @@
       <file leaf-file-name="pro-mp_run_mujoco.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="435">
-              <caret line="161" column="64" selection-start-line="161" selection-start-column="64" selection-end-line="161" selection-end-column="64" />
+            <state relative-caret-position="418">
+              <caret line="160" column="34" selection-start-line="160" selection-start-column="34" selection-end-line="160" selection-end-column="34" />
               <folding>
                 <element signature="e#0#9#0" expanded="true" />
               </folding>
@@ -182,9 +184,9 @@
         <option value="$PROJECT_DIR$/meta_policy_search/meta_tester.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/samplers/meta_sampler.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/trainer.py" />
-        <option value="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" />
         <option value="$PROJECT_DIR$/meta_policy_search/meta_trainer.py" />
         <option value="$PROJECT_DIR$/run_scripts/rl2_run_mujoco.py" />
+        <option value="$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py" />
       </list>
     </option>
   </component>
@@ -777,8 +779,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/run_scripts/pro-mp_run_mujoco.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="435">
-          <caret line="161" column="64" selection-start-line="161" selection-start-column="64" selection-end-line="161" selection-end-column="64" />
+        <state relative-caret-position="418">
+          <caret line="160" column="34" selection-start-line="160" selection-start-column="34" selection-end-line="160" selection-end-column="34" />
           <folding>
             <element signature="e#0#9#0" expanded="true" />
           </folding>
