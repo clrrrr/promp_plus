@@ -137,7 +137,7 @@ if __name__=="__main__":
 
             # sampler config
             'rollouts_per_meta_task': args.rollouts_per_meta_task,
-            'max_path_length': 200,
+            'max_path_length': 100,#200,
             'parallel': True,
 
             # sample processor config
@@ -158,7 +158,7 @@ if __name__=="__main__":
             'init_inner_kl_penalty': 5e-4,
             'adaptive_inner_kl_penalty': False, # whether to use an adaptive or fixed KL-penalty coefficient
             'n_itr': 10001, # number of overall training iterations #1001
-            'meta_batch_size': 10, # number of sampled meta-tasks per iterations #5
+            'meta_batch_size': 40#10, # number of sampled meta-tasks per iterations #5
             'num_inner_grad_steps': 1, # number of inner / adaptation gradient steps
 
         }
