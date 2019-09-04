@@ -158,7 +158,7 @@ if __name__=="__main__":
             'init_inner_kl_penalty': 5e-4,
             'adaptive_inner_kl_penalty': False, # whether to use an adaptive or fixed KL-penalty coefficient
             'n_itr': 10001, # number of overall training iterations #1001
-            'meta_batch_size': 40, #10, # number of sampled meta-tasks per iterations #5
+            'meta_batch_size': 10, #10, # number of sampled meta-tasks per iterations #5
             'num_inner_grad_steps': 1, # number of inner / adaptation gradient steps
 
         }

@@ -68,6 +68,34 @@ class MetaSampler(Sampler):
             self.vec_env = self.vec_envs[str(self.envs_per_task)]
             self.vec_env.reset()
 
+
+    def update_batch_size_v2(self, batch_size): # num of rollouts per task
+        self.batch_size = batch_size
+        self.envs_per_task = 1#######batch_size
+        self.total_samples = self.meta_batch_size * batch_size * self.max_path_length
+
+        if str(1) in self.vec_envs:
+            self.vec_env = self.vec_envs[str(1)]
+            self.vec_env.reset()
+        else:
+            self.vec_envs[str(1)] = MetaParallelEnvExecutor(self.env, self.meta_batch_size, 1, self.max_path_length)
+            self.vec_env = self.vec_envs[str(1)]
+            self.vec_env.reset()
+
+        # if batch_size < 3:
+        #     if str(self.envs_per_task) in self.vec_envs:
+        #         self.vec_env = self.vec_envs[str(self.envs_per_task)]
+        #         self.vec_env.reset()
+        #     else:
+        #         self.vec_envs[str(self.envs_per_task)] = MetaParallelEnvExecutor(self.env, self.meta_batch_size,
+        #                                                                          self.envs_per_task,
+        #                                                                          self.max_path_length)
+        #         self.vec_env = self.vec_envs[str(self.envs_per_task)]
+        #         self.vec_env.reset()
+        # else:
+        #     self.vec_env = self.vec_envs['1']
+
+
         # if self.parallel:
         #     self.vec_env = MetaParallelEnvExecutor(self.env, self.meta_batch_size, self.envs_per_task, self.max_path_length)
         # else:
@@ -87,6 +115,10 @@ class MetaSampler(Sampler):
         self.vec_env.set_tasks(tasks)
 
     def obtain_samples(self, log=False, log_prefix='', test=False):
+
+        print("total_samples:",self.total_samples)
+        print("meta_batch_size:", self.meta_batch_size)
+        print("max_path_length:" ,self.max_path_length)
 
         print("--------------obtaining", self.total_samples//self.meta_batch_size//self.max_path_length,
               "rollouts_per_task, for", self.meta_batch_size, "tasks..--------------")
